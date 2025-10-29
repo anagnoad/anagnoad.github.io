@@ -1,0 +1,27 @@
+/* src/styles.css */
+body {
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: normal;
+  font-size: 20px;
+  line-height: 32px;
+  font-family:
+    Roboto,
+    "Helvetica Neue",
+    sans-serif;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+a {
+  color: inherit;
+}
+a:hover,
+a:focus {
+  color: inherit;
+}
+.spinner {
+  margin-top: 260px;
+  text-align: center;
+}
+
+/* angular:styles/global:styles */
+/*# sourceMappingURL=styles.css.map */
