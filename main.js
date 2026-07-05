@@ -67183,10 +67183,10 @@ AppRoutingModule = __decorate([
   })
 ], AppRoutingModule);
 
-// angular:jit:template:src\app\app.component.html
-var app_component_default = "<!--The content below is only a placeholder and can be replaced.-->\r\n<app-jumbotron></app-jumbotron>\r\n\r\n<!-- <app-about></app-about> -->\r\n<app-work></app-work>\r\n<app-education></app-education>\r\n<app-contact></app-contact>\r\n\r\n<app-disclaimer></app-disclaimer>\r\n<router-outlet></router-outlet>";
+// angular:jit:template:src/app/app.component.html
+var app_component_default = "<!--The content below is only a placeholder and can be replaced.-->\n<app-jumbotron></app-jumbotron>\n\n<!-- <app-about></app-about> -->\n<app-work></app-work>\n<app-education></app-education>\n<app-contact></app-contact>\n\n<app-disclaimer></app-disclaimer>\n<router-outlet></router-outlet>";
 
-// angular:jit:style:src\app\app.component.css
+// angular:jit:style:src/app/app.component.css
 var app_component_default2 = "/* src/app/app.component.css */\n.particles {\n  z-index: -100;\n  height: 200px;\n  display: inline;\n}\n.websiteContent {\n  background-color: white;\n}\n/*# sourceMappingURL=app.component.css.map */\n";
 
 // src/app/app.component.ts
@@ -71778,10 +71778,10 @@ var LayoutModule = class _LayoutModule {
   args: [{}]
 }] });
 
-// angular:jit:template:src\app\education\education.component.html
-var education_component_default = '<div class="uk-section">\r\n  <div class="uk-container">\r\n    <h1 class="uk-heading-line uk-animation-slide-right-small">\r\n      <span>Education</span>\r\n    </h1>\r\n    <app-shared-card-grid [cards]=getCards() [columns]="2"></app-shared-card-grid>\r\n  </div>\r\n  <div class="uk-container uk-margin-medium-top">\r\n    <ul uk-accordion>\r\n      <li class="uk-open">\r\n        <a class="uk-accordion-title" href="#">Publications</a>\r\n        <div class="uk-accordion-content">\r\n          <ul class="uk-list uk-list-stripped uk-list-divider">\r\n            <li><a href="https://link.springer.com/chapter/10.1007/978-3-319-98932-7_5">Learning-to-Rank and Relevance Feedback for Literature Appraisal in Empirical Medicine</a></li>\r\n            <li><a href="https://www.ijcai.org/proceedings/2018/0841.pdf">Hatebusters: A Web Application for Actively Reporting YouTube Hate Speech</a></li>\r\n            <li><a href="http://people.cs.uchicago.edu/~aelmore/class/topics17/alpine.pdf">Alpine: Efficient In situ Data Exploration in the Presence of Updates</a></li>\r\n            <li><a href="https://intelligence.csd.auth.gr/publications/anagnostou-clef-2017.pdf">Combining Inter-Review Learning-to-Rank and Intra-Review Incremental Training for Title and Abstract Screening in Systematic Reviews</a></li>\r\n          </ul>\r\n        </div>\r\n      </li>\r\n    </ul>\r\n</div>\r\n</div>';
+// angular:jit:template:src/app/education/education.component.html
+var education_component_default = '<div class="uk-section">\n  <div class="uk-container">\n    <h1 class="uk-heading-line uk-animation-slide-right-small">\n      <span>Education</span>\n    </h1>\n    <app-shared-card-grid [cards]=getCards() [columns]="2"></app-shared-card-grid>\n  </div>\n  <div class="uk-container uk-margin-medium-top">\n    <ul uk-accordion>\n      <li class="uk-open">\n        <a class="uk-accordion-title" href="#">Publications</a>\n        <div class="uk-accordion-content">\n          <ul class="uk-list uk-list-stripped uk-list-divider">\n            <li><a href="https://link.springer.com/chapter/10.1007/978-3-319-98932-7_5">Learning-to-Rank and Relevance Feedback for Literature Appraisal in Empirical Medicine</a></li>\n            <li><a href="https://www.ijcai.org/proceedings/2018/0841.pdf">Hatebusters: A Web Application for Actively Reporting YouTube Hate Speech</a></li>\n            <li><a href="http://people.cs.uchicago.edu/~aelmore/class/topics17/alpine.pdf">Alpine: Efficient In situ Data Exploration in the Presence of Updates</a></li>\n            <li><a href="https://intelligence.csd.auth.gr/publications/anagnostou-clef-2017.pdf">Combining Inter-Review Learning-to-Rank and Intra-Review Incremental Training for Title and Abstract Screening in Systematic Reviews</a></li>\n          </ul>\n        </div>\n      </li>\n    </ul>\n</div>\n</div>';
 
-// angular:jit:style:src\app\education\education.component.css
+// angular:jit:style:src/app/education/education.component.css
 var education_component_default2 = "/* src/app/education/education.component.css */\n/*# sourceMappingURL=education.component.css.map */\n";
 
 // src/app/education/education.component.ts
@@ -71830,10 +71830,10 @@ EducationComponent = __decorate3([
   })
 ], EducationComponent);
 
-// angular:jit:template:src\app\jumbotron\jumbotron.component.html
-var jumbotron_component_default = '<div\r\n  class="profileContainer uk-animation-slide-bottom-small"\r\n  uk-parallax="opacity: 1,0"\r\n>\r\n  <div class="profilePic uk-margin-medium-top"></div>\r\n\r\n  <div class="particles">\r\n    <ng-particles\r\n      [id]="id"\r\n      [options]="particlesOptions"\r\n      (particlesLoaded)="particlesLoaded($event)"\r\n      (particlesInit)="particlesInit($event)"\r\n    ></ng-particles>\r\n  </div>\r\n</div>\r\n\r\n<div\r\n  id="jumbotron"\r\n  uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky"\r\n>\r\n  <div class="uk-card uk-align-center uk-card-default">\r\n    <div class="uk-card-header uk-container">\r\n      <div class="uk-grid-small uk-flex-middle" uk-grid>\r\n        <div class="uk-width-expand uk-animation-slide-bottom-small">\r\n          <h3 class="uk-card-title uk-margin-remove-bottom">\r\n            Antonis Anagnostou\r\n          </h3>\r\n          <p class="uk-text-meta uk-margin-remove-top">SENIOR MACHINE LEARNING ENGINEER</p>\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n';
+// angular:jit:template:src/app/jumbotron/jumbotron.component.html
+var jumbotron_component_default = '<div\n  class="profileContainer uk-animation-slide-bottom-small"\n  uk-parallax="opacity: 1,0"\n>\n  <div class="profilePic uk-margin-medium-top"></div>\n\n  <div class="particles">\n    <ng-particles\n      [id]="id"\n      [options]="particlesOptions"\n      (particlesLoaded)="particlesLoaded($event)"\n      (particlesInit)="particlesInit($event)"\n    ></ng-particles>\n  </div>\n</div>\n\n<div\n  id="jumbotron"\n  uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky"\n>\n  <div class="uk-card uk-align-center uk-card-default">\n    <div class="uk-card-header uk-container">\n      <div class="uk-grid-small uk-flex-middle" uk-grid>\n        <div class="uk-width-expand uk-animation-slide-bottom-small">\n          <h3 class="uk-card-title uk-margin-remove-bottom">\n            Antonis Anagnostou\n          </h3>\n          <p class="uk-text-meta uk-margin-remove-top">SENIOR MACHINE LEARNING ENGINEER</p>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n';
 
-// angular:jit:style:src\app\jumbotron\jumbotron.component.css
+// angular:jit:style:src/app/jumbotron/jumbotron.component.css
 var jumbotron_component_default2 = '/* src/app/jumbotron/jumbotron.component.css */\n#jumbotron {\n  text-align: center;\n  margin-top: 0;\n}\n.profileContainer {\n  position: relative;\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: 1.5rem;\n  padding: 3rem 1rem 1.25rem;\n  background:\n    linear-gradient(\n      135deg,\n      #0f1c2e 0%,\n      #1f3b61 55%,\n      #27536c 100%);\n  color: #f5f7fa;\n  box-shadow: 0 20px 50px rgba(15, 28, 46, 0.3);\n  margin-bottom: 0;\n}\n.profileContainer::after {\n  content: "";\n  position: absolute;\n  inset: 1rem;\n  border: 1px solid rgba(255, 255, 255, 0.12);\n  border-radius: 0;\n  pointer-events: none;\n}\n.profilePic {\n  position: relative;\n  z-index: 1;\n  width: 204px;\n  height: 204px;\n  background-image: url("./media/profilepic1.jpg");\n  background-position: center 10%;\n  background-size: 120%;\n  border-radius: 100%;\n  border: 6px solid rgba(255, 255, 255, 0.6);\n  box-shadow: 0 15px 30px rgba(12, 23, 38, 0.35);\n}\n.particles {\n  position: absolute;\n  inset: 0;\n  z-index: 0;\n  pointer-events: none;\n}\n.particles ng-particles {\n  width: 100%;\n  height: 100%;\n}\n#jumbotron .uk-card {\n  margin-top: 0;\n  border-radius: 0;\n}\n/*# sourceMappingURL=jumbotron.component.css.map */\n';
 
 // src/app/jumbotron/jumbotron.component.ts
@@ -71925,10 +71925,10 @@ JumbotronComponent = __decorate4([
   })
 ], JumbotronComponent);
 
-// angular:jit:template:src\app\work\work.component.html
-var work_component_default = '<div class="uk-section">\r\n<div class="uk-container">\r\n  <h1 class="uk-heading-line">\r\n    <span>Work</span>\r\n  </h1>\r\n  <app-shared-card-grid [cards]=getCards() [columns]=3 [circularLogos]=false></app-shared-card-grid>\r\n</div>\r\n</div>';
+// angular:jit:template:src/app/work/work.component.html
+var work_component_default = '<div class="uk-section">\n<div class="uk-container">\n  <h1 class="uk-heading-line">\n    <span>Work</span>\n  </h1>\n  <app-shared-card-grid [cards]=getCards() [columns]=3 [circularLogos]=false></app-shared-card-grid>\n</div>\n</div>';
 
-// angular:jit:style:src\app\work\work.component.css
+// angular:jit:style:src/app/work/work.component.css
 var work_component_default2 = "/* src/app/work/work.component.css */\n/*# sourceMappingURL=work.component.css.map */\n";
 
 // src/app/work/work.component.ts
@@ -72019,10 +72019,10 @@ WorkComponent = __decorate5([
   })
 ], WorkComponent);
 
-// angular:jit:template:src\app\shared-card-grid\shared-card-grid.component.html
-var shared_card_grid_component_default = '<div class="uk-child-width-1-{{columns}}@s" uk-grid>\r\n  <div *ngFor="let item of cards">\r\n    <div class="uk-card uk-card-default uk-card-small uk-card-hover uk-animation-slide-bottom-small">\r\n      <div class="uk-card-header uk-animation-slide-bottom-small">\r\n        <div class="uk-grid-small uk-flex-middle" uk-grid>\r\n          <div class="uk-width-auto">\r\n            <img [class.uk-border-circle]="circularLogos" width="40" height="40" src="{{item.logo}}">\r\n          </div>\r\n          <div class="uk-width-expand">\r\n            <h3 class="uk-card-title uk-margin-remove-bottom">{{item.title}}</h3>\r\n            <p class="uk-text-meta uk-margin-remove-top">\r\n              <time datetime="2016-04-01T19:00">{{item.subtitle}}</time>\r\n            </p>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class="uk-card-body">\r\n        <p class="uk-text-meta">\r\n          {{item.time}}\r\n        </p>\r\n        <p>{{item.mainText}}</p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>';
+// angular:jit:template:src/app/shared-card-grid/shared-card-grid.component.html
+var shared_card_grid_component_default = '<div class="uk-child-width-1-{{columns}}@s" uk-grid>\n  <div *ngFor="let item of cards">\n    <div class="uk-card uk-card-default uk-card-small uk-card-hover uk-animation-slide-bottom-small">\n      <div class="uk-card-header uk-animation-slide-bottom-small">\n        <div class="uk-grid-small uk-flex-middle" uk-grid>\n          <div class="uk-width-auto">\n            <img [class.uk-border-circle]="circularLogos" width="40" height="40" src="{{item.logo}}">\n          </div>\n          <div class="uk-width-expand">\n            <h3 class="uk-card-title uk-margin-remove-bottom">{{item.title}}</h3>\n            <p class="uk-text-meta uk-margin-remove-top">\n              <time datetime="2016-04-01T19:00">{{item.subtitle}}</time>\n            </p>\n          </div>\n        </div>\n      </div>\n      <div class="uk-card-body">\n        <p class="uk-text-meta">\n          {{item.time}}\n        </p>\n        <p>{{item.mainText}}</p>\n      </div>\n    </div>\n  </div>\n</div>';
 
-// angular:jit:style:src\app\shared-card-grid\shared-card-grid.component.css
+// angular:jit:style:src/app/shared-card-grid/shared-card-grid.component.css
 var shared_card_grid_component_default2 = "/* src/app/shared-card-grid/shared-card-grid.component.css */\n/*# sourceMappingURL=shared-card-grid.component.css.map */\n";
 
 // src/app/shared-card-grid/shared-card-grid.component.ts
@@ -72051,24 +72051,24 @@ SharedCardGridComponent = __decorate6([
   })
 ], SharedCardGridComponent);
 
-// angular:jit:template:src\app\about\about.component.html
-var about_component_default = `<div class="uk-section uk-animation-slide-bottom-small" uk-parallax="opacity: 1,0">\r
-  <div class="uk-container">\r
-    <p>\r
-      I am a Software Engineer with more than 3 years of experience in the industry. I am currently working in\r
-      ML-powered Search in Office 365's team in London.\r
-      My passions include but are not limited to:\r
-    </p>\r
-    <ul>\r
-      <li>Machine Learning</li>\r
-      <li>Distributed and scalable architectures</li>\r
-      <li>Web technologies</li>\r
-      <li>Accessibility and inclusive UX</li>\r
-    </ul>\r
-  </div>\r
+// angular:jit:template:src/app/about/about.component.html
+var about_component_default = `<div class="uk-section uk-animation-slide-bottom-small" uk-parallax="opacity: 1,0">
+  <div class="uk-container">
+    <p>
+      I am a Software Engineer with more than 3 years of experience in the industry. I am currently working in
+      ML-powered Search in Office 365's team in London.
+      My passions include but are not limited to:
+    </p>
+    <ul>
+      <li>Machine Learning</li>
+      <li>Distributed and scalable architectures</li>
+      <li>Web technologies</li>
+      <li>Accessibility and inclusive UX</li>
+    </ul>
+  </div>
 </div>`;
 
-// angular:jit:style:src\app\about\about.component.css
+// angular:jit:style:src/app/about/about.component.css
 var about_component_default2 = "/* src/app/about/about.component.css */\n/*# sourceMappingURL=about.component.css.map */\n";
 
 // src/app/about/about.component.ts
@@ -72092,10 +72092,10 @@ AboutComponent = __decorate7([
   })
 ], AboutComponent);
 
-// angular:jit:template:src\app\disclaimer\disclaimer.component.html
-var disclaimer_component_default = '<div class="uk-section uk-section-secondary disclaimer">\r\n  <div class="uk-container">\r\n    <p>\r\n      This website was built using <a href="http://angular.io">Angular</a> and <a href="https://getuikit.com">uikit framework</a>.\r\n      All product and company names are trademarks\u2122 or registered\xAE trademarks of their respective holders.\r\n    </p>\r\n  </div>\r\n  </div>';
+// angular:jit:template:src/app/disclaimer/disclaimer.component.html
+var disclaimer_component_default = '<div class="uk-section uk-section-secondary disclaimer">\n  <div class="uk-container">\n    <p>\n      This website was built using <a href="http://angular.io">Angular</a> and <a href="https://getuikit.com">uikit framework</a>.\n      All product and company names are trademarks\u2122 or registered\xAE trademarks of their respective holders.\n    </p>\n  </div>\n  </div>';
 
-// angular:jit:style:src\app\disclaimer\disclaimer.component.css
+// angular:jit:style:src/app/disclaimer/disclaimer.component.css
 var disclaimer_component_default2 = "/* src/app/disclaimer/disclaimer.component.css */\n.disclaimer p {\n  font-size: 12px;\n}\n/*# sourceMappingURL=disclaimer.component.css.map */\n";
 
 // src/app/disclaimer/disclaimer.component.ts
@@ -72119,10 +72119,10 @@ DisclaimerComponent = __decorate8([
   })
 ], DisclaimerComponent);
 
-// angular:jit:template:src\app\contact\contact.component.html
-var contact_component_default = '<div class="uk-section uk-section-primary">\r\n  <div class="uk-container">\r\n    <h1 class="uk-heading" style="text-align:center">\r\n      <span>Getting in touch</span>\r\n    </h1>\r\n    <div class="uk-flex uk-flex-center uk-animation-toggle">\r\n      <a href="https://www.linkedin.com/in/antoniosanagnostou/" class="uk-button uk-button-default uk-button-large uk-button-primary  uk-animation-slide-bottom-small">Find me on LinkedIn</a>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n';
+// angular:jit:template:src/app/contact/contact.component.html
+var contact_component_default = '<div class="uk-section uk-section-primary">\n  <div class="uk-container">\n    <h1 class="uk-heading" style="text-align:center">\n      <span>Getting in touch</span>\n    </h1>\n    <div class="uk-flex uk-flex-center uk-animation-toggle">\n      <a href="https://www.linkedin.com/in/antoniosanagnostou/" class="uk-button uk-button-default uk-button-large uk-button-primary  uk-animation-slide-bottom-small">Find me on LinkedIn</a>\n    </div>\n  </div>\n</div>\n\n';
 
-// angular:jit:style:src\app\contact\contact.component.css
+// angular:jit:style:src/app/contact/contact.component.css
 var contact_component_default2 = "/* src/app/contact/contact.component.css */\n/*# sourceMappingURL=contact.component.css.map */\n";
 
 // src/app/contact/contact.component.ts
