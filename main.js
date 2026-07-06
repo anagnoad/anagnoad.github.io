@@ -1039,7 +1039,7 @@ var Subscription = class _Subscription {
     }
   }
   add(teardown) {
-    var _a8;
+    var _a7;
     if (teardown && teardown !== this) {
       if (this.closed) {
         execFinalizer(teardown);
@@ -1050,7 +1050,7 @@ var Subscription = class _Subscription {
           }
           teardown._addParent(this);
         }
-        (this._finalizers = (_a8 = this._finalizers) !== null && _a8 !== void 0 ? _a8 : []).push(teardown);
+        (this._finalizers = (_a7 = this._finalizers) !== null && _a7 !== void 0 ? _a7 : []).push(teardown);
       }
     }
   }
@@ -1404,8 +1404,8 @@ var Observable = class _Observable {
     });
   }
   _subscribe(subscriber) {
-    var _a8;
-    return (_a8 = this.source) === null || _a8 === void 0 ? void 0 : _a8.subscribe(subscriber);
+    var _a7;
+    return (_a7 = this.source) === null || _a7 === void 0 ? void 0 : _a7.subscribe(subscriber);
   }
   [observable]() {
     return this;
@@ -1425,8 +1425,8 @@ Observable.create = (subscribe) => {
   return new Observable(subscribe);
 };
 function getPromiseCtor(promiseCtor) {
-  var _a8;
-  return (_a8 = promiseCtor !== null && promiseCtor !== void 0 ? promiseCtor : config.Promise) !== null && _a8 !== void 0 ? _a8 : Promise;
+  var _a7;
+  return (_a7 = promiseCtor !== null && promiseCtor !== void 0 ? promiseCtor : config.Promise) !== null && _a7 !== void 0 ? _a7 : Promise;
 }
 function isObserver(value) {
   return value && isFunction(value.next) && isFunction(value.error) && isFunction(value.complete);
@@ -1490,11 +1490,11 @@ var OperatorSubscriber = class extends Subscriber {
     } : super._complete;
   }
   unsubscribe() {
-    var _a8;
+    var _a7;
     if (!this.shouldUnsubscribe || this.shouldUnsubscribe()) {
       const { closed } = this;
       super.unsubscribe();
-      !closed && ((_a8 = this.onFinalize) === null || _a8 === void 0 ? void 0 : _a8.call(this));
+      !closed && ((_a7 = this.onFinalize) === null || _a7 === void 0 ? void 0 : _a7.call(this));
     }
   }
 };
@@ -1648,8 +1648,8 @@ var Subject = class extends Observable {
     this.observers = this.currentObservers = null;
   }
   get observed() {
-    var _a8;
-    return ((_a8 = this.observers) === null || _a8 === void 0 ? void 0 : _a8.length) > 0;
+    var _a7;
+    return ((_a7 = this.observers) === null || _a7 === void 0 ? void 0 : _a7.length) > 0;
   }
   _trySubscribe(subscriber) {
     this._throwIfClosed();
@@ -1696,20 +1696,20 @@ var AnonymousSubject = class extends Subject {
     this.source = source;
   }
   next(value) {
-    var _a8, _b;
-    (_b = (_a8 = this.destination) === null || _a8 === void 0 ? void 0 : _a8.next) === null || _b === void 0 ? void 0 : _b.call(_a8, value);
+    var _a7, _b;
+    (_b = (_a7 = this.destination) === null || _a7 === void 0 ? void 0 : _a7.next) === null || _b === void 0 ? void 0 : _b.call(_a7, value);
   }
   error(err) {
-    var _a8, _b;
-    (_b = (_a8 = this.destination) === null || _a8 === void 0 ? void 0 : _a8.error) === null || _b === void 0 ? void 0 : _b.call(_a8, err);
+    var _a7, _b;
+    (_b = (_a7 = this.destination) === null || _a7 === void 0 ? void 0 : _a7.error) === null || _b === void 0 ? void 0 : _b.call(_a7, err);
   }
   complete() {
-    var _a8, _b;
-    (_b = (_a8 = this.destination) === null || _a8 === void 0 ? void 0 : _a8.complete) === null || _b === void 0 ? void 0 : _b.call(_a8);
+    var _a7, _b;
+    (_b = (_a7 = this.destination) === null || _a7 === void 0 ? void 0 : _a7.complete) === null || _b === void 0 ? void 0 : _b.call(_a7);
   }
   _subscribe(subscriber) {
-    var _a8, _b;
-    return (_b = (_a8 = this.source) === null || _a8 === void 0 ? void 0 : _a8.subscribe(subscriber)) !== null && _b !== void 0 ? _b : EMPTY_SUBSCRIPTION;
+    var _a7, _b;
+    return (_b = (_a7 = this.source) === null || _a7 === void 0 ? void 0 : _a7.subscribe(subscriber)) !== null && _b !== void 0 ? _b : EMPTY_SUBSCRIPTION;
   }
 };
 
@@ -1995,7 +1995,7 @@ function fromReadableStreamLike(readableStream) {
 }
 function process(asyncIterable, subscriber) {
   var asyncIterable_1, asyncIterable_1_1;
-  var e_1, _a8;
+  var e_1, _a7;
   return __awaiter(this, void 0, void 0, function* () {
     try {
       for (asyncIterable_1 = __asyncValues(asyncIterable); asyncIterable_1_1 = yield asyncIterable_1.next(), !asyncIterable_1_1.done; ) {
@@ -2009,7 +2009,7 @@ function process(asyncIterable, subscriber) {
       e_1 = { error: e_1_1 };
     } finally {
       try {
-        if (asyncIterable_1_1 && !asyncIterable_1_1.done && (_a8 = asyncIterable_1.return)) yield _a8.call(asyncIterable_1);
+        if (asyncIterable_1_1 && !asyncIterable_1_1.done && (_a7 = asyncIterable_1.return)) yield _a7.call(asyncIterable_1);
       } finally {
         if (e_1) throw e_1.error;
       }
@@ -2550,27 +2550,27 @@ function takeUntil(notifier) {
 function tap(observerOrNext, error, complete) {
   const tapObserver = isFunction(observerOrNext) || error || complete ? { next: observerOrNext, error, complete } : observerOrNext;
   return tapObserver ? operate((source, subscriber) => {
-    var _a8;
-    (_a8 = tapObserver.subscribe) === null || _a8 === void 0 ? void 0 : _a8.call(tapObserver);
+    var _a7;
+    (_a7 = tapObserver.subscribe) === null || _a7 === void 0 ? void 0 : _a7.call(tapObserver);
     let isUnsub = true;
     source.subscribe(createOperatorSubscriber(subscriber, (value) => {
-      var _a9;
-      (_a9 = tapObserver.next) === null || _a9 === void 0 ? void 0 : _a9.call(tapObserver, value);
+      var _a8;
+      (_a8 = tapObserver.next) === null || _a8 === void 0 ? void 0 : _a8.call(tapObserver, value);
       subscriber.next(value);
     }, () => {
-      var _a9;
+      var _a8;
       isUnsub = false;
-      (_a9 = tapObserver.complete) === null || _a9 === void 0 ? void 0 : _a9.call(tapObserver);
+      (_a8 = tapObserver.complete) === null || _a8 === void 0 ? void 0 : _a8.call(tapObserver);
       subscriber.complete();
     }, (err) => {
-      var _a9;
+      var _a8;
       isUnsub = false;
-      (_a9 = tapObserver.error) === null || _a9 === void 0 ? void 0 : _a9.call(tapObserver, err);
+      (_a8 = tapObserver.error) === null || _a8 === void 0 ? void 0 : _a8.call(tapObserver, err);
       subscriber.error(err);
     }, () => {
-      var _a9, _b;
+      var _a8, _b;
       if (isUnsub) {
-        (_a9 = tapObserver.unsubscribe) === null || _a9 === void 0 ? void 0 : _a9.call(tapObserver);
+        (_a8 = tapObserver.unsubscribe) === null || _a8 === void 0 ? void 0 : _a8.call(tapObserver);
       }
       (_b = tapObserver.finalize) === null || _b === void 0 ? void 0 : _b.call(tapObserver);
     }));
@@ -69748,7 +69748,7 @@ var StateValue = class {
     const value = isObj ? input2["value"] : input2;
     this.value = normalizeTriggerValue(value);
     if (isObj) {
-      const _a8 = input2, { value: value2 } = _a8, options = __objRest(_a8, ["value"]);
+      const _a7 = input2, { value: value2 } = _a7, options = __objRest(_a7, ["value"]);
       this.options = options;
     } else {
       this.options = {};
@@ -71779,7 +71779,7 @@ var LayoutModule = class _LayoutModule {
 }] });
 
 // angular:jit:template:src/app/education/education.component.html
-var education_component_default = '<div class="uk-section">\n  <div class="uk-container">\n    <h1 class="uk-heading-line uk-animation-slide-right-small">\n      <span>Education</span>\n    </h1>\n    <app-shared-card-grid [cards]=getCards() [columns]="2"></app-shared-card-grid>\n  </div>\n  <div class="uk-container uk-margin-medium-top">\n    <ul uk-accordion>\n      <li class="uk-open">\n        <a class="uk-accordion-title" href="#">Publications</a>\n        <div class="uk-accordion-content">\n          <ul class="uk-list uk-list-stripped uk-list-divider">\n            <li><a href="https://link.springer.com/chapter/10.1007/978-3-319-98932-7_5">Learning-to-Rank and Relevance Feedback for Literature Appraisal in Empirical Medicine</a></li>\n            <li><a href="https://www.ijcai.org/proceedings/2018/0841.pdf">Hatebusters: A Web Application for Actively Reporting YouTube Hate Speech</a></li>\n            <li><a href="http://people.cs.uchicago.edu/~aelmore/class/topics17/alpine.pdf">Alpine: Efficient In situ Data Exploration in the Presence of Updates</a></li>\n            <li><a href="https://intelligence.csd.auth.gr/publications/anagnostou-clef-2017.pdf">Combining Inter-Review Learning-to-Rank and Intra-Review Incremental Training for Title and Abstract Screening in Systematic Reviews</a></li>\n          </ul>\n        </div>\n      </li>\n    </ul>\n</div>\n</div>';
+var education_component_default = '<div class="uk-section">\n  <div class="uk-container">\n    <h1 class="uk-heading-line uk-animation-slide-right-small">\n      <span>Education</span>\n    </h1>\n    <app-shared-card-grid [cards]=getCards() [columns]="2"></app-shared-card-grid>\n  </div>\n  <div class="uk-container uk-margin-medium-top">\n    <ul uk-accordion>\n      <li class="uk-open">\n        <a class="uk-accordion-title" href="#">Publications</a>\n        <div class="uk-accordion-content">\n          <ul class="uk-list uk-list-striped uk-list-divider">\n            <li>\n              <a href="https://doi.org/10.1145/3786304.3787924">2026 CHIIR - PulseSearch: Modeling Long- and Short-term Patterns for Personalized Music Search Suggestions</a>\n            </li>\n            <li>\n              <a href="https://link.springer.com/chapter/10.1007/978-3-319-98932-7_5">2018 CLEF - Learning-to-Rank and Relevance Feedback for Literature Appraisal in Empirical Medicine</a>\n            </li>\n            <li>\n              <a href="https://www.ijcai.org/proceedings/2018/0841.pdf">2018 IJCAI - Hatebusters: A Web Application for Actively Reporting YouTube Hate Speech</a>\n            </li>\n            <li>\n              <a href="https://dl.acm.org/doi/10.1145/3035918.3058732">2017 SIGMOD - Alpine: Efficient In-Situ Data Exploration in the Presence of Updates</a>\n            </li>\n            <li>\n              <a href="https://intelligence.csd.auth.gr/publications/anagnostou-clef-2017.pdf">2017 CLEF - Combining Inter-Review Learning-to-Rank and Intra-Review Incremental Training for Title and Abstract Screening in Systematic Reviews</a>\n            </li>\n          </ul>\n        </div>\n      </li>\n    </ul>\n</div>\n</div>\n';
 
 // angular:jit:style:src/app/education/education.component.css
 var education_component_default2 = "/* src/app/education/education.component.css */\n/*# sourceMappingURL=education.component.css.map */\n";
@@ -71807,7 +71807,7 @@ var EducationComponent = (_a = class {
         logo: "assets/logos/auth.png",
         degreeName: "BSc Informatics",
         degreeTime: "September 2012 - June 2017",
-        text: "Graduated with Distinction (GPA: 9.59/10)"
+        text: "Awarded with Distinction (GPA: 9.59/10)"
       }
     ];
   }
@@ -71834,7 +71834,7 @@ EducationComponent = __decorate3([
 var jumbotron_component_default = '<div\n  class="profileContainer uk-animation-slide-bottom-small"\n  uk-parallax="opacity: 1,0"\n>\n  <div class="profilePic uk-margin-medium-top"></div>\n\n  <div class="particles">\n    <ng-particles\n      [id]="id"\n      [options]="particlesOptions"\n      (particlesLoaded)="particlesLoaded($event)"\n      (particlesInit)="particlesInit($event)"\n    ></ng-particles>\n  </div>\n</div>\n\n<div\n  id="jumbotron"\n  uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky"\n>\n  <div class="uk-card uk-align-center uk-card-default">\n    <div class="uk-card-header uk-container">\n      <div class="uk-grid-small uk-flex-middle" uk-grid>\n        <div class="uk-width-expand uk-animation-slide-bottom-small">\n          <h3 class="uk-card-title uk-margin-remove-bottom">\n            Antonis Anagnostou\n          </h3>\n          <p class="uk-text-meta uk-margin-remove-top">SENIOR MACHINE LEARNING ENGINEER</p>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n';
 
 // angular:jit:style:src/app/jumbotron/jumbotron.component.css
-var jumbotron_component_default2 = '/* src/app/jumbotron/jumbotron.component.css */\n#jumbotron {\n  text-align: center;\n  margin-top: 0;\n}\n.profileContainer {\n  position: relative;\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: 1.5rem;\n  padding: 3rem 1rem 1.25rem;\n  background:\n    linear-gradient(\n      135deg,\n      #0f1c2e 0%,\n      #1f3b61 55%,\n      #27536c 100%);\n  color: #f5f7fa;\n  box-shadow: 0 20px 50px rgba(15, 28, 46, 0.3);\n  margin-bottom: 0;\n}\n.profileContainer::after {\n  content: "";\n  position: absolute;\n  inset: 1rem;\n  border: 1px solid rgba(255, 255, 255, 0.12);\n  border-radius: 0;\n  pointer-events: none;\n}\n.profilePic {\n  position: relative;\n  z-index: 1;\n  width: 204px;\n  height: 204px;\n  background-image: url("./media/profilepic1.jpg");\n  background-position: center 10%;\n  background-size: 120%;\n  border-radius: 100%;\n  border: 6px solid rgba(255, 255, 255, 0.6);\n  box-shadow: 0 15px 30px rgba(12, 23, 38, 0.35);\n}\n.particles {\n  position: absolute;\n  inset: 0;\n  z-index: 0;\n  pointer-events: none;\n}\n.particles ng-particles {\n  width: 100%;\n  height: 100%;\n}\n#jumbotron .uk-card {\n  margin-top: 0;\n  border-radius: 0;\n}\n/*# sourceMappingURL=jumbotron.component.css.map */\n';
+var jumbotron_component_default2 = '/* src/app/jumbotron/jumbotron.component.css */\n#jumbotron {\n  text-align: center;\n  margin-top: 0;\n}\n.profileContainer {\n  position: relative;\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: 1.5rem;\n  padding: 3rem 1rem 1.25rem;\n  background:\n    linear-gradient(\n      135deg,\n      #0f1c2e 0%,\n      #1f3b61 55%,\n      #27536c 100%);\n  color: #f5f7fa;\n  box-shadow: 0 20px 50px rgba(15, 28, 46, 0.3);\n  margin-bottom: 0;\n}\n.profileContainer::after {\n  content: "";\n  position: absolute;\n  inset: 1rem;\n  border: 1px solid rgba(255, 255, 255, 0.12);\n  border-radius: 0;\n  pointer-events: none;\n}\n.profilePic {\n  position: relative;\n  z-index: 1;\n  width: 204px;\n  height: 204px;\n  background-image: url("./media/profilepic1.jpg");\n  background-position: center 10%;\n  background-size: 120%;\n  border-radius: 100%;\n  border: 6px solid rgba(255, 255, 255, 0.6);\n  box-shadow: 0 15px 30px rgba(12, 23, 38, 0.35);\n}\n.particles {\n  position: absolute;\n  inset: 0;\n  z-index: 0;\n  pointer-events: none;\n}\n.particles ng-particles {\n  width: 100%;\n  height: 100%;\n}\n#jumbotron .uk-card {\n  margin-top: 0;\n  border-radius: 0;\n}\n#jumbotron .uk-card-title {\n  font-size: 1.85rem;\n  line-height: 1.2;\n}\n/*# sourceMappingURL=jumbotron.component.css.map */\n';
 
 // src/app/jumbotron/jumbotron.component.ts
 var __decorate4 = function(decorators, target, key, desc) {
@@ -71926,10 +71926,85 @@ JumbotronComponent = __decorate4([
 ], JumbotronComponent);
 
 // angular:jit:template:src/app/work/work.component.html
-var work_component_default = '<div class="uk-section">\n<div class="uk-container">\n  <h1 class="uk-heading-line">\n    <span>Work</span>\n  </h1>\n  <app-shared-card-grid [cards]=getCards() [columns]=3 [circularLogos]=false></app-shared-card-grid>\n</div>\n</div>';
+var work_component_default = `<div class="uk-section work-section">
+  <div class="uk-container">
+    <h1 class="uk-heading-line">
+      <span>Work</span>
+    </h1>
+
+    <div class="work-tabs" role="tablist" aria-label="Work experience">
+      <button
+        *ngFor="let experience of experiences"
+        type="button"
+        class="work-tab"
+        role="tab"
+        [class.work-tab-active]="experience.id === activeExperienceId"
+        [attr.aria-selected]="experience.id === activeExperienceId"
+        [attr.aria-controls]="'work-panel-' + experience.id"
+        (click)="setActiveExperience(experience.id)"
+      >
+        {{ experience.label }}
+      </button>
+    </div>
+
+    <section
+      class="work-panel uk-animation-slide-bottom-small"
+      role="tabpanel"
+      [id]="'work-panel-' + activeExperience.id"
+    >
+      <div class="work-panel-grid">
+        <div class="work-identity">
+          <div class="work-identity-header">
+            <img
+              *ngIf="activeExperience.logo; else logoPlaceholder"
+              class="work-logo"
+              [src]="activeExperience.logo"
+              [alt]="activeExperience.company + ' logo'"
+            />
+            <ng-template #logoPlaceholder>
+              <div class="work-logo work-logo-placeholder" aria-hidden="true">
+                {{ activeExperience.initials }}
+              </div>
+            </ng-template>
+
+            <h2>{{ activeExperience.company }}</h2>
+          </div>
+
+          <div class="work-role" *ngFor="let role of activeExperience.roles">
+            <p class="work-role-title">{{ role.title }}</p>
+            <p *ngIf="role.note" class="work-role-note">{{ role.note }}</p>
+            <p class="work-role-time">
+              {{ role.time }}
+              <span *ngIf="role.location" class="work-role-location">
+                {{ role.location }}
+              </span>
+            </p>
+          </div>
+        </div>
+
+        <div class="work-description">
+          <h3>Overview</h3>
+          <p>{{ activeExperience.description }}</p>
+
+          <div
+            *ngIf="activeExperience.featuredPublication"
+            class="work-publication"
+          >
+            <h3>Publication</h3>
+            <a [href]="activeExperience.featuredPublication.url">
+              <span>{{ activeExperience.featuredPublication.label }}</span>
+              {{ activeExperience.featuredPublication.title }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+`;
 
 // angular:jit:style:src/app/work/work.component.css
-var work_component_default2 = "/* src/app/work/work.component.css */\n/*# sourceMappingURL=work.component.css.map */\n";
+var work_component_default2 = "/* src/app/work/work.component.css */\n.work-section {\n  background: #f7f8fa;\n}\n.work-tabs {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 0.5rem;\n  margin: 2rem 0 1rem;\n  overflow-x: auto;\n}\n.work-tab {\n  flex: 0 0 auto;\n  min-height: 44px;\n  padding: 0 1rem;\n  border: 1px solid #d8dde6;\n  background: #ffffff;\n  color: #364152;\n  font: inherit;\n  font-size: 0.9rem;\n  font-weight: 600;\n  cursor: pointer;\n  transition:\n    background-color 0.15s ease,\n    border-color 0.15s ease,\n    color 0.15s ease;\n}\n.work-tab:hover,\n.work-tab:focus {\n  border-color: #1e87f0;\n  color: #1e87f0;\n  outline: none;\n}\n.work-tab-active {\n  background: #17324d;\n  border-color: #17324d;\n  color: #ffffff;\n}\n.work-tab-active:hover,\n.work-tab-active:focus {\n  color: #ffffff;\n}\n.work-panel {\n  padding: 2rem;\n  background: #ffffff;\n  border: 1px solid #e2e7ef;\n  box-shadow: 0 12px 28px rgba(23, 50, 77, 0.08);\n}\n.work-logo {\n  width: 72px;\n  height: 72px;\n  object-fit: contain;\n}\n.work-logo-placeholder {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: #17324d;\n  color: #ffffff;\n  font-size: 1.1rem;\n  font-weight: 700;\n}\n.work-panel h2 {\n  margin: 0;\n  color: #172033;\n  font-size: 1.45rem;\n  line-height: 1.2;\n}\n.work-panel-grid {\n  display: grid;\n  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.4fr);\n  gap: 2rem;\n}\n.work-panel h3 {\n  margin: 0 0 1rem;\n  color: #172033;\n  font-size: 1rem;\n  font-weight: 700;\n}\n.work-identity {\n  padding-right: 2rem;\n  border-right: 1px solid #edf0f4;\n}\n.work-identity-header {\n  display: grid;\n  grid-template-columns: 72px minmax(0, 1fr);\n  gap: 1rem;\n  align-items: center;\n  padding-bottom: 0.75rem;\n}\n.work-role {\n  padding: 0.9rem 0;\n  border-top: 1px solid #edf0f4;\n}\n.work-role:first-of-type {\n  margin-top: 1rem;\n}\n.work-role-title {\n  margin: 0;\n  color: #253247;\n  font-weight: 700;\n}\n.work-role-note {\n  margin: 0.25rem 0 0;\n  color: #526070;\n  font-size: 0.9rem;\n}\n.work-role-time {\n  margin: 0.25rem 0 0;\n  color: #718096;\n  font-size: 0.9rem;\n}\n.work-role-location {\n  display: inline-flex;\n  align-items: center;\n  min-height: 22px;\n  margin-left: 0.5rem;\n  padding: 0 0.45rem;\n  border: 1px solid #d8dde6;\n  color: #526070;\n  font-size: 0.75rem;\n  font-weight: 700;\n  text-transform: uppercase;\n}\n.work-description p {\n  margin: 0;\n  color: #3f4c5f;\n  font-size: 1rem;\n  line-height: 1.75;\n}\n.work-publication {\n  margin-top: 1.25rem;\n  padding-top: 1rem;\n  border-top: 1px solid #edf0f4;\n}\n.work-publication h3 {\n  margin-bottom: 0.5rem;\n  font-size: 0.85rem;\n}\n.work-publication a {\n  color: #1e5f9f;\n  font-size: 0.85rem;\n  font-weight: 600;\n  line-height: 1.45;\n}\n.work-publication span {\n  display: inline-block;\n  margin-right: 0.35rem;\n  color: #526070;\n  font-size: 0.75rem;\n  font-weight: 700;\n}\n@media (max-width: 760px) {\n  .work-panel {\n    padding: 1.25rem;\n  }\n  .work-panel-grid {\n    grid-template-columns: 1fr;\n  }\n  .work-identity {\n    padding-right: 0;\n    padding-bottom: 1.25rem;\n    border-right: 0;\n    border-bottom: 1px solid #edf0f4;\n  }\n  .work-logo {\n    width: 56px;\n    height: 56px;\n  }\n  .work-identity-header {\n    grid-template-columns: 56px minmax(0, 1fr);\n  }\n  .work-panel h2 {\n    font-size: 1.5rem;\n  }\n}\n/*# sourceMappingURL=work.component.css.map */\n";
 
 // src/app/work/work.component.ts
 var __decorate5 = function(decorators, target, key, desc) {
@@ -71938,78 +72013,135 @@ var __decorate5 = function(decorators, target, key, desc) {
   else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
   return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var _a3;
-var WorkComponent = (_a3 = class {
+var WorkComponent = class WorkComponent2 {
   constructor() {
-    this.workItems = [
+    this.activeExperienceId = "spotify";
+    this.experiences = [
       {
+        id: "spotify",
+        label: "Spotify",
         company: "Spotify",
         logo: "assets/logos/spotify.png",
-        jobTitle: "Senior Machine Learning Engineer",
-        jobTime: "November 2021 - present",
-        text: ""
+        roles: [
+          {
+            title: "Senior Machine Learning Engineer",
+            note: "Promoted from Machine Learning Engineer II",
+            time: "November 2021 - present"
+          }
+        ],
+        description: "I work on Spotify Search, building retrieval and ranking systems for personalized search and prompt suggestions. Recent work includes zero-query recommendations, LLM-personalized suggested prompts and queries, offline evaluation with LLM-as-judge methods, and the production pipelines and services that support model training and serving.",
+        featuredPublication: {
+          label: "CHIIR 2026",
+          title: "PulseSearch: Modeling Long- and Short-term Patterns for Personalized Music Search Suggestions",
+          url: "https://doi.org/10.1145/3786304.3787924"
+        }
       },
       {
+        id: "microsoft",
+        label: "Microsoft",
         company: "Microsoft",
         logo: "assets/logos/microsoft.png",
-        jobTitle: "Software Engineer II - Search ML",
-        jobTime: "September 2019 - October 2021",
-        text: ""
+        roles: [
+          {
+            title: "Software Engineer II - Search ML",
+            time: "September 2019 - October 2021"
+          },
+          {
+            title: "Software Engineer",
+            time: "June 2017 - August 2018"
+          },
+          {
+            title: "Software Engineer Intern",
+            time: "July 2015 - June 2016"
+          }
+        ],
+        description: "I worked on search and recommendation experiences across Microsoft Search, Outlook Web, Windows Search, Cortana, Edge, Bing, and Microsoft Graph. My work included ML-backed ranking, on-device and hybrid search, expertise discovery, autosuggest experiences, and people suggestion relevance."
       },
       {
+        id: "factmata",
+        label: "Factmata",
         company: "Factmata",
         logo: "assets/logos/factmata.jpg",
-        jobTitle: "Machine Learning Engineer",
-        jobTime: "June 2017 - August 2018",
-        text: ""
+        roles: [
+          {
+            title: "Machine Learning Engineer",
+            time: "June 2019 - August 2019"
+          }
+        ],
+        description: "I worked on abusive speech detection using machine learning and NLP as part of my MSc thesis research. The work focused on text classification, dataset preparation, model evaluation, and applying language modelling techniques to moderation problems."
       },
       {
-        company: "Microsoft",
-        logo: "assets/logos/microsoft.png",
-        jobTitle: "Software Engineer",
-        jobTime: "June 2017 - August 2018",
-        text: ""
-      },
-      {
+        id: "intelligence",
+        label: "Intelligence Group",
         company: "Intelligence Group - AUTh",
         logo: "assets/logos/intelligence.png",
-        jobTitle: "Student intern",
-        jobTime: "January 2017 - May 2017",
-        text: ""
+        roles: [
+          {
+            title: "Student Intern",
+            time: "January 2017 - May 2017"
+          }
+        ],
+        description: "I worked on learning-to-rank methods for biomedical document retrieval, with a focus on total recall optimization for systematic-review screening. The work combined machine learning implementation, retrieval evaluation, and publication-oriented research.",
+        featuredPublication: {
+          label: "CLEF 2017",
+          title: "Combining Inter-Review Learning-to-Rank and Intra-Review Incremental Training for Title and Abstract Screening in Systematic Reviews",
+          url: "https://intelligence.csd.auth.gr/publications/anagnostou-clef-2017.pdf"
+        }
       },
       {
+        id: "epfl",
+        label: "EPFL",
         company: "DIAS Lab - EPFL",
         logo: "assets/logos/epfl.png",
-        jobTitle: "Student intern",
-        jobTime: "July 2016 - September 2016",
-        text: ""
+        roles: [
+          {
+            title: "Student Intern",
+            time: "July 2016 - September 2016"
+          }
+        ],
+        description: "I worked on in-situ data exploration methods at DIAS Lab, implementing and evaluating database systems research ideas, featured in a demonstration paper with a SIGMOD 2017 publication.",
+        featuredPublication: {
+          label: "SIGMOD 2017",
+          title: "Alpine: Efficient In-Situ Data Exploration in the Presence of Updates",
+          url: "https://dl.acm.org/doi/10.1145/3035918.3058732"
+        }
       },
       {
-        company: "Microsoft",
-        logo: "assets/logos/microsoft.png",
-        jobTitle: "Software Engineer intern",
-        jobTime: "July 2015 - June 2016",
-        text: ""
-      },
-      {
+        id: "itauth",
+        label: "IT Center of AUTh",
         company: "IT Center of AUTh",
         logo: "assets/logos/itauth.png",
-        jobTitle: "Software Engineer intern",
-        jobTime: "September 2013 - June 2015",
-        text: ""
+        roles: [
+          {
+            title: "Software Engineer Intern",
+            time: "September 2013 - June 2015"
+          }
+        ],
+        description: "I worked on full-stack and mobile engineering projects for Aristotle University technical systems. The role covered implementation, internal tooling, maintenance, and support for university staff and members."
+      },
+      {
+        id: "berkeley",
+        label: "UC Berkeley CREST Lab",
+        company: "UC Berkeley CREST Lab",
+        initials: "UC",
+        roles: [
+          {
+            title: "Full-stack and Mobile Engineering",
+            time: "2013 - 2016",
+            location: "Remote"
+          }
+        ],
+        description: "I worked on an iOS mobile app for gamifying household energy savings in a research lab environment."
       }
     ];
   }
-  getCards() {
-    return this.workItems.map((x) => ({
-      logo: x.logo,
-      title: x.company,
-      subtitle: x.jobTitle.toLocaleUpperCase(),
-      mainText: x.text,
-      time: x.jobTime
-    }));
+  get activeExperience() {
+    return this.experiences.find((experience) => experience.id === this.activeExperienceId) || this.experiences[0];
   }
-}, _a3.ctorParameters = () => [], _a3);
+  setActiveExperience(experienceId) {
+    this.activeExperienceId = experienceId;
+  }
+};
 WorkComponent = __decorate5([
   Component({
     selector: "app-work",
@@ -72032,16 +72164,16 @@ var __decorate6 = function(decorators, target, key, desc) {
   else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
   return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var _a4;
-var SharedCardGridComponent = (_a4 = class {
+var _a3;
+var SharedCardGridComponent = (_a3 = class {
   constructor() {
     this.circularLogos = true;
   }
-}, _a4.ctorParameters = () => [], _a4.propDecorators = {
+}, _a3.ctorParameters = () => [], _a3.propDecorators = {
   cards: [{ type: Input }],
   columns: [{ type: Input }],
   circularLogos: [{ type: Input }]
-}, _a4);
+}, _a3);
 SharedCardGridComponent = __decorate6([
   Component({
     selector: "app-shared-card-grid",
@@ -72078,11 +72210,11 @@ var __decorate7 = function(decorators, target, key, desc) {
   else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
   return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var _a5;
-var AboutComponent = (_a5 = class {
+var _a4;
+var AboutComponent = (_a4 = class {
   constructor() {
   }
-}, _a5.ctorParameters = () => [], _a5);
+}, _a4.ctorParameters = () => [], _a4);
 AboutComponent = __decorate7([
   Component({
     selector: "app-about",
@@ -72105,11 +72237,11 @@ var __decorate8 = function(decorators, target, key, desc) {
   else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
   return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var _a6;
-var DisclaimerComponent = (_a6 = class {
+var _a5;
+var DisclaimerComponent = (_a5 = class {
   constructor() {
   }
-}, _a6.ctorParameters = () => [], _a6);
+}, _a5.ctorParameters = () => [], _a5);
 DisclaimerComponent = __decorate8([
   Component({
     selector: "app-disclaimer",
@@ -72132,11 +72264,11 @@ var __decorate9 = function(decorators, target, key, desc) {
   else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
   return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var _a7;
-var ContactComponent = (_a7 = class {
+var _a6;
+var ContactComponent = (_a6 = class {
   constructor() {
   }
-}, _a7.ctorParameters = () => [], _a7);
+}, _a6.ctorParameters = () => [], _a6);
 ContactComponent = __decorate9([
   Component({
     selector: "app-contact",
@@ -72365,31 +72497,31 @@ function calcEasing(value, type) {
   }
 }
 function calcPositionFromSize(data) {
-  var _a8, _b;
-  return ((_a8 = data.position) === null || _a8 === void 0 ? void 0 : _a8.x) !== void 0 && ((_b = data.position) === null || _b === void 0 ? void 0 : _b.y) !== void 0 ? {
+  var _a7, _b;
+  return ((_a7 = data.position) === null || _a7 === void 0 ? void 0 : _a7.x) !== void 0 && ((_b = data.position) === null || _b === void 0 ? void 0 : _b.y) !== void 0 ? {
     x: data.position.x * data.size.width / 100,
     y: data.position.y * data.size.height / 100
   } : void 0;
 }
 function calcPositionOrRandomFromSize(data) {
-  var _a8, _b, _c, _d;
+  var _a7, _b, _c, _d;
   return {
-    x: ((_b = (_a8 = data.position) === null || _a8 === void 0 ? void 0 : _a8.x) !== null && _b !== void 0 ? _b : Math.random() * 100) * data.size.width / 100,
+    x: ((_b = (_a7 = data.position) === null || _a7 === void 0 ? void 0 : _a7.x) !== null && _b !== void 0 ? _b : Math.random() * 100) * data.size.width / 100,
     y: ((_d = (_c = data.position) === null || _c === void 0 ? void 0 : _c.y) !== null && _d !== void 0 ? _d : Math.random() * 100) * data.size.height / 100
   };
 }
 function calcPositionOrRandomFromSizeRanged(data) {
-  var _a8, _b;
+  var _a7, _b;
   const position = {
-    x: ((_a8 = data.position) === null || _a8 === void 0 ? void 0 : _a8.x) !== void 0 ? getRangeValue(data.position.x) : void 0,
+    x: ((_a7 = data.position) === null || _a7 === void 0 ? void 0 : _a7.x) !== void 0 ? getRangeValue(data.position.x) : void 0,
     y: ((_b = data.position) === null || _b === void 0 ? void 0 : _b.y) !== void 0 ? getRangeValue(data.position.y) : void 0
   };
   return calcPositionOrRandomFromSize({ size: data.size, position });
 }
 function calcExactPositionOrRandomFromSize(data) {
-  var _a8, _b, _c, _d;
+  var _a7, _b, _c, _d;
   return {
-    x: (_b = (_a8 = data.position) === null || _a8 === void 0 ? void 0 : _a8.x) !== null && _b !== void 0 ? _b : Math.random() * data.size.width,
+    x: (_b = (_a7 = data.position) === null || _a7 === void 0 ? void 0 : _a7.x) !== null && _b !== void 0 ? _b : Math.random() * data.size.width,
     y: (_d = (_c = data.position) === null || _c === void 0 ? void 0 : _c.y) !== null && _d !== void 0 ? _d : Math.random() * data.size.height
   };
 }
@@ -72431,9 +72563,9 @@ function isInArray(value, array) {
 }
 function loadFont(character) {
   return __async(this, null, function* () {
-    var _a8, _b;
+    var _a7, _b;
     try {
-      yield document.fonts.load(`${(_a8 = character.weight) !== null && _a8 !== void 0 ? _a8 : "400"} 36px '${(_b = character.font) !== null && _b !== void 0 ? _b : "Verdana"}'`);
+      yield document.fonts.load(`${(_a7 = character.weight) !== null && _a7 !== void 0 ? _a7 : "400"} 36px '${(_b = character.font) !== null && _b !== void 0 ? _b : "Verdana"}'`);
     } catch (_c) {
     }
   });
@@ -72665,7 +72797,7 @@ function stringToRgba(input2) {
   }
 }
 function colorToRgb(input2, index, useIndex = true) {
-  var _a8, _b, _c;
+  var _a7, _b, _c;
   if (input2 === void 0) {
     return;
   }
@@ -72678,7 +72810,7 @@ function colorToRgb(input2, index, useIndex = true) {
       const colorSelected = itemFromArray(color.value, index, useIndex);
       res = colorToRgb({ value: colorSelected });
     } else {
-      const colorValue = color.value, rgbColor = (_a8 = colorValue.rgb) !== null && _a8 !== void 0 ? _a8 : color.value;
+      const colorValue = color.value, rgbColor = (_a7 = colorValue.rgb) !== null && _a7 !== void 0 ? _a7 : color.value;
       if (rgbColor.r !== void 0) {
         res = rgbColor;
       } else {
@@ -72721,8 +72853,8 @@ function rgbToHsl(color) {
   return res;
 }
 function stringToAlpha(input2) {
-  var _a8;
-  return (_a8 = stringToRgba(input2)) === null || _a8 === void 0 ? void 0 : _a8.a;
+  var _a7;
+  return (_a7 = stringToRgba(input2)) === null || _a7 === void 0 ? void 0 : _a7.a;
 }
 function stringToRgb(input2) {
   return stringToRgba(input2);
@@ -72848,11 +72980,11 @@ function colorMix(color1, color2, size1, size2) {
   };
 }
 function getLinkColor(p1, p2, linkColor) {
-  var _a8, _b;
+  var _a7, _b;
   if (linkColor === Constants.randomColorValue) {
     return getRandomRgbColor();
   } else if (linkColor === "mid") {
-    const sourceColor = (_a8 = p1.getFillColor()) !== null && _a8 !== void 0 ? _a8 : p1.getStrokeColor(), destColor = (_b = p2 === null || p2 === void 0 ? void 0 : p2.getFillColor()) !== null && _b !== void 0 ? _b : p2 === null || p2 === void 0 ? void 0 : p2.getStrokeColor();
+    const sourceColor = (_a7 = p1.getFillColor()) !== null && _a7 !== void 0 ? _a7 : p1.getStrokeColor(), destColor = (_b = p2 === null || p2 === void 0 ? void 0 : p2.getFillColor()) !== null && _b !== void 0 ? _b : p2 === null || p2 === void 0 ? void 0 : p2.getStrokeColor();
     if (sourceColor && destColor && p2) {
       return colorMix(sourceColor, destColor, p1.getRadius(), p2.getRadius());
     } else {
@@ -73047,7 +73179,7 @@ function drawGrabLine(context2, width, begin, end, colorLine, opacity) {
   context2.restore();
 }
 function drawParticle(container, context2, particle, delta, colorStyles, backgroundMask, composite, radius, opacity, shadow) {
-  var _a8, _b, _c, _d;
+  var _a7, _b, _c, _d;
   const pos = particle.getPosition(), tiltOptions = particle.options.tilt, rollOptions = particle.options.roll;
   context2.save();
   if (tiltOptions.enable || rollOptions.enable) {
@@ -73057,7 +73189,7 @@ function drawParticle(container, context2, particle, delta, colorStyles, backgro
     context2.translate(pos.x, pos.y);
   }
   context2.beginPath();
-  const angle = ((_b = (_a8 = particle.rotate) === null || _a8 === void 0 ? void 0 : _a8.value) !== null && _b !== void 0 ? _b : 0) + (particle.options.rotate.path ? particle.velocity.angle : 0);
+  const angle = ((_b = (_a7 = particle.rotate) === null || _a7 === void 0 ? void 0 : _a7.value) !== null && _b !== void 0 ? _b : 0) + (particle.options.rotate.path ? particle.velocity.angle : 0);
   if (angle !== 0) {
     context2.rotate(angle);
   }
@@ -73169,9 +73301,9 @@ var Canvas = class {
     this.paint();
   }
   loadCanvas(canvas) {
-    var _a8;
+    var _a7;
     if (this.generatedCanvas) {
-      (_a8 = this.element) === null || _a8 === void 0 ? void 0 : _a8.remove();
+      (_a7 = this.element) === null || _a7 === void 0 ? void 0 : _a7.remove();
     }
     this.generatedCanvas = canvas.dataset && Constants.generatedAttribute in canvas.dataset ? canvas.dataset[Constants.generatedAttribute] === "true" : this.generatedCanvas;
     this.element = canvas;
@@ -73183,9 +73315,9 @@ var Canvas = class {
     this.initBackground();
   }
   destroy() {
-    var _a8;
+    var _a7;
     if (this.generatedCanvas) {
-      (_a8 = this.element) === null || _a8 === void 0 ? void 0 : _a8.remove();
+      (_a7 = this.element) === null || _a7 === void 0 ? void 0 : _a7.remove();
     }
     this.draw((ctx) => {
       clear(ctx, this.size);
@@ -73255,25 +73387,25 @@ var Canvas = class {
   }
   drawConnectLine(p1, p2) {
     this.draw((ctx) => {
-      var _a8;
+      var _a7;
       const lineStyle = this.lineStyle(p1, p2);
       if (!lineStyle) {
         return;
       }
       const pos1 = p1.getPosition(), pos2 = p2.getPosition();
-      drawConnectLine(ctx, (_a8 = p1.retina.linksWidth) !== null && _a8 !== void 0 ? _a8 : this.container.retina.linksWidth, lineStyle, pos1, pos2);
+      drawConnectLine(ctx, (_a7 = p1.retina.linksWidth) !== null && _a7 !== void 0 ? _a7 : this.container.retina.linksWidth, lineStyle, pos1, pos2);
     });
   }
   drawGrabLine(particle, lineColor, opacity, mousePos) {
     const container = this.container;
     this.draw((ctx) => {
-      var _a8;
+      var _a7;
       const beginPos = particle.getPosition();
-      drawGrabLine(ctx, (_a8 = particle.retina.linksWidth) !== null && _a8 !== void 0 ? _a8 : container.retina.linksWidth, beginPos, mousePos, lineColor, opacity);
+      drawGrabLine(ctx, (_a7 = particle.retina.linksWidth) !== null && _a7 !== void 0 ? _a7 : container.retina.linksWidth, beginPos, mousePos, lineColor, opacity);
     });
   }
   drawParticle(particle, delta) {
-    var _a8, _b, _c, _d, _e, _f;
+    var _a7, _b, _c, _d, _e, _f;
     if (particle.spawning || particle.destroyed) {
       return;
     }
@@ -73281,7 +73413,7 @@ var Canvas = class {
     if (radius <= 0) {
       return;
     }
-    const pfColor = particle.getFillColor(), psColor = (_a8 = particle.getStrokeColor()) !== null && _a8 !== void 0 ? _a8 : pfColor;
+    const pfColor = particle.getFillColor(), psColor = (_a7 = particle.getStrokeColor()) !== null && _a7 !== void 0 ? _a7 : pfColor;
     if (!pfColor && !psColor) {
       return;
     }
@@ -73480,7 +73612,7 @@ var EventListeners = class {
     this.manageListeners(false);
   }
   manageListeners(add) {
-    var _a8;
+    var _a7;
     const container = this.container, options = container.actualOptions, detectType = options.interactivity.detectsOn;
     let mouseLeaveEvent = Constants.mouseLeaveEvent;
     if (detectType === "window") {
@@ -73488,7 +73620,7 @@ var EventListeners = class {
       mouseLeaveEvent = Constants.mouseOutEvent;
     } else if (detectType === "parent" && container.canvas.element) {
       const canvasEl = container.canvas.element;
-      container.interactivity.element = (_a8 = canvasEl.parentElement) !== null && _a8 !== void 0 ? _a8 : canvasEl.parentNode;
+      container.interactivity.element = (_a7 = canvasEl.parentElement) !== null && _a7 !== void 0 ? _a7 : canvasEl.parentNode;
     } else {
       container.interactivity.element = container.canvas.element;
     }
@@ -73558,8 +73690,8 @@ var EventListeners = class {
       delete this.resizeTimeout;
     }
     this.resizeTimeout = setTimeout(() => __async(this, null, function* () {
-      var _a8;
-      return yield (_a8 = this.container.canvas) === null || _a8 === void 0 ? void 0 : _a8.windowResize();
+      var _a7;
+      return yield (_a7 = this.container.canvas) === null || _a7 === void 0 ? void 0 : _a7.windowResize();
     }), 500);
   }
   handleVisibilityChange() {
@@ -73589,9 +73721,9 @@ var EventListeners = class {
     }
   }
   mouseTouchMove(e) {
-    var _a8, _b, _c, _d, _e, _f, _g;
+    var _a7, _b, _c, _d, _e, _f, _g;
     const container = this.container, options = container.actualOptions;
-    if (!((_a8 = container.interactivity) === null || _a8 === void 0 ? void 0 : _a8.element)) {
+    if (!((_a7 = container.interactivity) === null || _a7 === void 0 ? void 0 : _a7.element)) {
       return;
     }
     container.interactivity.mouse.inside = true;
@@ -73730,14 +73862,14 @@ var FrameManager = class {
   }
   nextFrame(timestamp) {
     return __async(this, null, function* () {
-      var _a8;
+      var _a7;
       try {
         const container = this.container;
         if (container.lastFrameTime !== void 0 && timestamp < container.lastFrameTime + 1e3 / container.fpsLimit) {
           container.draw(false);
           return;
         }
-        (_a8 = container.lastFrameTime) !== null && _a8 !== void 0 ? _a8 : container.lastFrameTime = timestamp;
+        (_a7 = container.lastFrameTime) !== null && _a7 !== void 0 ? _a7 : container.lastFrameTime = timestamp;
         const deltaValue = timestamp - container.lastFrameTime, delta = {
           value: deltaValue,
           factor: 60 * deltaValue / 1e3
@@ -73933,11 +74065,11 @@ var DivEvent = class {
     this.selectors = value instanceof Array ? value.map((t) => `#${t}`) : `#${value}`;
   }
   load(data) {
-    var _a8, _b;
+    var _a7, _b;
     if (data === void 0) {
       return;
     }
-    const ids = (_b = (_a8 = data.ids) !== null && _a8 !== void 0 ? _a8 : data.elementId) !== null && _b !== void 0 ? _b : data.el;
+    const ids = (_b = (_a7 = data.ids) !== null && _a7 !== void 0 ? _a7 : data.elementId) !== null && _b !== void 0 ? _b : data.el;
     if (ids !== void 0) {
       this.ids = ids;
     }
@@ -74027,11 +74159,11 @@ var Events = class {
     this.onHover = value;
   }
   load(data) {
-    var _a8, _b, _c;
+    var _a7, _b, _c;
     if (data === void 0) {
       return;
     }
-    this.onClick.load((_a8 = data.onClick) !== null && _a8 !== void 0 ? _a8 : data.onclick);
+    this.onClick.load((_a7 = data.onClick) !== null && _a7 !== void 0 ? _a7 : data.onclick);
     const onDiv = (_b = data.onDiv) !== null && _b !== void 0 ? _b : data.ondiv;
     if (onDiv !== void 0) {
       if (onDiv instanceof Array) {
@@ -74222,14 +74354,14 @@ var Connect = class {
     this.links = value;
   }
   load(data) {
-    var _a8, _b;
+    var _a7, _b;
     if (data === void 0) {
       return;
     }
     if (data.distance !== void 0) {
       this.distance = data.distance;
     }
-    this.links.load((_b = (_a8 = data.links) !== null && _a8 !== void 0 ? _a8 : data.lineLinked) !== null && _b !== void 0 ? _b : data.line_linked);
+    this.links.load((_b = (_a7 = data.links) !== null && _a7 !== void 0 ? _a7 : data.lineLinked) !== null && _b !== void 0 ? _b : data.line_linked);
     if (data.radius !== void 0) {
       this.radius = data.radius;
     }
@@ -74281,14 +74413,14 @@ var Grab = class {
     this.links = value;
   }
   load(data) {
-    var _a8, _b;
+    var _a7, _b;
     if (data === void 0) {
       return;
     }
     if (data.distance !== void 0) {
       this.distance = data.distance;
     }
-    this.links.load((_b = (_a8 = data.links) !== null && _a8 !== void 0 ? _a8 : data.lineLinked) !== null && _b !== void 0 ? _b : data.line_linked);
+    this.links.load((_b = (_a7 = data.links) !== null && _a7 !== void 0 ? _a7 : data.lineLinked) !== null && _b !== void 0 ? _b : data.line_linked);
   }
 };
 
@@ -74373,7 +74505,7 @@ var Push = class {
     this.quantity = value;
   }
   load(data) {
-    var _a8;
+    var _a7;
     if (data === void 0) {
       return;
     }
@@ -74386,7 +74518,7 @@ var Push = class {
     if (!this.groups.length) {
       this.default = true;
     }
-    const quantity = (_a8 = data.quantity) !== null && _a8 !== void 0 ? _a8 : data.particles_nb;
+    const quantity = (_a7 = data.quantity) !== null && _a7 !== void 0 ? _a7 : data.particles_nb;
     if (quantity !== void 0) {
       this.quantity = quantity;
     }
@@ -74405,11 +74537,11 @@ var Remove = class {
     this.quantity = value;
   }
   load(data) {
-    var _a8;
+    var _a7;
     if (data === void 0) {
       return;
     }
-    const quantity = (_a8 = data.quantity) !== null && _a8 !== void 0 ? _a8 : data.particles_nb;
+    const quantity = (_a7 = data.quantity) !== null && _a7 !== void 0 ? _a7 : data.particles_nb;
     if (quantity !== void 0) {
       this.quantity = quantity;
     }
@@ -74603,11 +74735,11 @@ var Interactivity = class {
     this.detectsOn = value;
   }
   load(data) {
-    var _a8, _b, _c;
+    var _a7, _b, _c;
     if (data === void 0) {
       return;
     }
-    const detectsOn = (_a8 = data.detectsOn) !== null && _a8 !== void 0 ? _a8 : data.detect_on;
+    const detectsOn = (_a7 = data.detectsOn) !== null && _a7 !== void 0 ? _a7 : data.detect_on;
     if (detectsOn !== void 0) {
       this.detectsOn = detectsOn;
     }
@@ -74628,13 +74760,13 @@ var Interactivity = class {
 // node_modules/tsparticles/esm/Options/Classes/ManualParticle.js
 var ManualParticle = class {
   load(data) {
-    var _a8, _b;
+    var _a7, _b;
     if (!data) {
       return;
     }
     if (data.position !== void 0) {
       this.position = {
-        x: (_a8 = data.position.x) !== null && _a8 !== void 0 ? _a8 : 50,
+        x: (_a7 = data.position.x) !== null && _a7 !== void 0 ? _a7 : 50,
         y: (_b = data.position.y) !== null && _b !== void 0 ? _b : 50
       };
     }
@@ -75239,7 +75371,7 @@ var Attract2 = class {
     this.rotate.y = value;
   }
   load(data) {
-    var _a8, _b, _c, _d;
+    var _a7, _b, _c, _d;
     if (!data) {
       return;
     }
@@ -75249,7 +75381,7 @@ var Attract2 = class {
     if (data.enable !== void 0) {
       this.enable = data.enable;
     }
-    const rotateX = (_b = (_a8 = data.rotate) === null || _a8 === void 0 ? void 0 : _a8.x) !== null && _b !== void 0 ? _b : data.rotateX;
+    const rotateX = (_b = (_a7 = data.rotate) === null || _a7 === void 0 ? void 0 : _a7.x) !== null && _b !== void 0 ? _b : data.rotateX;
     if (rotateX !== void 0) {
       this.rotate.x = rotateX;
     }
@@ -75312,14 +75444,14 @@ var OutModes = class {
     this.default = "out";
   }
   load(data) {
-    var _a8, _b, _c, _d;
+    var _a7, _b, _c, _d;
     if (!data) {
       return;
     }
     if (data.default !== void 0) {
       this.default = data.default;
     }
-    this.bottom = (_a8 = data.bottom) !== null && _a8 !== void 0 ? _a8 : data.default;
+    this.bottom = (_a7 = data.bottom) !== null && _a7 !== void 0 ? _a7 : data.default;
     this.left = (_b = data.left) !== null && _b !== void 0 ? _b : data.default;
     this.right = (_c = data.right) !== null && _c !== void 0 ? _c : data.default;
     this.top = (_d = data.top) !== null && _d !== void 0 ? _d : data.default;
@@ -75453,7 +75585,7 @@ var Move = class {
     this.path = value;
   }
   load(data) {
-    var _a8, _b, _c;
+    var _a7, _b, _c;
     if (data === void 0) {
       return;
     }
@@ -75484,7 +75616,7 @@ var Move = class {
       this.enable = data.enable;
     }
     this.gravity.load(data.gravity);
-    const outMode = (_a8 = data.outMode) !== null && _a8 !== void 0 ? _a8 : data.out_mode;
+    const outMode = (_a7 = data.outMode) !== null && _a7 !== void 0 ? _a7 : data.out_mode;
     if (data.outModes !== void 0 || outMode !== void 0) {
       if (typeof data.outModes === "string" || data.outModes === void 0 && outMode !== void 0) {
         this.outModes.load({
@@ -75562,7 +75694,7 @@ var OpacityAnimation = class extends AnimationOptions {
     this.minimumValue = value;
   }
   load(data) {
-    var _a8;
+    var _a7;
     if (data === void 0) {
       return;
     }
@@ -75573,7 +75705,7 @@ var OpacityAnimation = class extends AnimationOptions {
     if (data.enable !== void 0) {
       this.enable = data.enable;
     }
-    this.minimumValue = (_a8 = data.minimumValue) !== null && _a8 !== void 0 ? _a8 : data.opacity_min;
+    this.minimumValue = (_a7 = data.minimumValue) !== null && _a7 !== void 0 ? _a7 : data.opacity_min;
     if (data.speed !== void 0) {
       this.speed = data.speed;
     }
@@ -75601,12 +75733,12 @@ var Opacity = class extends ValueWithRandom {
     this.animation = value;
   }
   load(data) {
-    var _a8;
+    var _a7;
     if (!data) {
       return;
     }
     super.load(data);
-    const animation2 = (_a8 = data.animation) !== null && _a8 !== void 0 ? _a8 : data.anim;
+    const animation2 = (_a7 = data.animation) !== null && _a7 !== void 0 ? _a7 : data.anim;
     if (animation2 !== void 0) {
       this.animation.load(animation2);
       this.value = setRangeValue(this.value, this.animation.enable ? this.animation.minimumValue : void 0);
@@ -75677,14 +75809,14 @@ var Density = class {
     this.area = value;
   }
   load(data) {
-    var _a8;
+    var _a7;
     if (data === void 0) {
       return;
     }
     if (data.enable !== void 0) {
       this.enable = data.enable;
     }
-    const area = (_a8 = data.area) !== null && _a8 !== void 0 ? _a8 : data.value_area;
+    const area = (_a7 = data.area) !== null && _a7 !== void 0 ? _a7 : data.value_area;
     if (area !== void 0) {
       this.area = area;
     }
@@ -75708,12 +75840,12 @@ var ParticlesNumber = class {
     this.limit = value;
   }
   load(data) {
-    var _a8;
+    var _a7;
     if (data === void 0) {
       return;
     }
     this.density.load(data.density);
-    const limit = (_a8 = data.limit) !== null && _a8 !== void 0 ? _a8 : data.max;
+    const limit = (_a7 = data.limit) !== null && _a7 !== void 0 ? _a7 : data.max;
     if (limit !== void 0) {
       this.limit = limit;
     }
@@ -75894,8 +76026,8 @@ var Shape = class {
     this.type = "circle";
   }
   get image() {
-    var _a8;
-    return (_a8 = this.options["image"]) !== null && _a8 !== void 0 ? _a8 : this.options["images"];
+    var _a7;
+    return (_a7 = this.options["image"]) !== null && _a7 !== void 0 ? _a7 : this.options["images"];
   }
   set image(value) {
     this.options["image"] = value;
@@ -75919,27 +76051,27 @@ var Shape = class {
   set stroke(_value) {
   }
   get character() {
-    var _a8;
-    return (_a8 = this.options["character"]) !== null && _a8 !== void 0 ? _a8 : this.options["char"];
+    var _a7;
+    return (_a7 = this.options["character"]) !== null && _a7 !== void 0 ? _a7 : this.options["char"];
   }
   set character(value) {
     this.options["character"] = value;
     this.options["char"] = value;
   }
   get polygon() {
-    var _a8;
-    return (_a8 = this.options["polygon"]) !== null && _a8 !== void 0 ? _a8 : this.options["star"];
+    var _a7;
+    return (_a7 = this.options["polygon"]) !== null && _a7 !== void 0 ? _a7 : this.options["star"];
   }
   set polygon(value) {
     this.options["polygon"] = value;
     this.options["star"] = value;
   }
   load(data) {
-    var _a8, _b, _c;
+    var _a7, _b, _c;
     if (data === void 0) {
       return;
     }
-    const options = (_a8 = data.options) !== null && _a8 !== void 0 ? _a8 : data.custom;
+    const options = (_a7 = data.options) !== null && _a7 !== void 0 ? _a7 : data.custom;
     if (options !== void 0) {
       for (const shape in options) {
         const item = options[shape];
@@ -75956,7 +76088,7 @@ var Shape = class {
     }
   }
   loadShape(item, mainKey, altKey, altOverride) {
-    var _a8, _b, _c, _d;
+    var _a7, _b, _c, _d;
     if (item === void 0) {
       return;
     }
@@ -75967,7 +76099,7 @@ var Shape = class {
           this.options[altKey] = [];
         }
       }
-      this.options[mainKey] = deepExtend((_a8 = this.options[mainKey]) !== null && _a8 !== void 0 ? _a8 : [], item);
+      this.options[mainKey] = deepExtend((_a7 = this.options[mainKey]) !== null && _a7 !== void 0 ? _a7 : [], item);
       if (!this.options[altKey] || altOverride) {
         this.options[altKey] = deepExtend((_b = this.options[altKey]) !== null && _b !== void 0 ? _b : [], item);
       }
@@ -76003,7 +76135,7 @@ var SizeAnimation = class extends AnimationOptions {
     this.minimumValue = value;
   }
   load(data) {
-    var _a8;
+    var _a7;
     if (data === void 0) {
       return;
     }
@@ -76014,7 +76146,7 @@ var SizeAnimation = class extends AnimationOptions {
     if (data.enable !== void 0) {
       this.enable = data.enable;
     }
-    this.minimumValue = (_a8 = data.minimumValue) !== null && _a8 !== void 0 ? _a8 : data.size_min;
+    this.minimumValue = (_a7 = data.minimumValue) !== null && _a7 !== void 0 ? _a7 : data.size_min;
     if (data.speed !== void 0) {
       this.speed = data.speed;
     }
@@ -76042,12 +76174,12 @@ var Size = class extends ValueWithRandom {
     this.animation = value;
   }
   load(data) {
-    var _a8;
+    var _a7;
     if (!data) {
       return;
     }
     super.load(data);
-    const animation2 = (_a8 = data.animation) !== null && _a8 !== void 0 ? _a8 : data.anim;
+    const animation2 = (_a7 = data.animation) !== null && _a7 !== void 0 ? _a7 : data.anim;
     if (animation2 !== void 0) {
       this.animation.load(animation2);
       this.value = setRangeValue(this.value, this.animation.enable ? this.animation.minimumValue : void 0);
@@ -76253,7 +76385,7 @@ var ParticlesOptions = class {
     this.links = value;
   }
   load(data) {
-    var _a8, _b, _c, _d, _e, _f, _g, _h;
+    var _a7, _b, _c, _d, _e, _f, _g, _h;
     if (data === void 0) {
       return;
     }
@@ -76261,7 +76393,7 @@ var ParticlesOptions = class {
     this.color.load(AnimatableColor.create(this.color, data.color));
     this.destroy.load(data.destroy);
     this.life.load(data.life);
-    const links = (_b = (_a8 = data.links) !== null && _a8 !== void 0 ? _a8 : data.lineLinked) !== null && _b !== void 0 ? _b : data.line_linked;
+    const links = (_b = (_a7 = data.links) !== null && _a7 !== void 0 ? _a7 : data.lineLinked) !== null && _b !== void 0 ? _b : data.line_linked;
     if (links !== void 0) {
       this.links.load(links);
     }
@@ -76455,7 +76587,7 @@ var Options = class {
     this.fullScreen.load(value);
   }
   load(data) {
-    var _a8, _b, _c, _d, _e;
+    var _a7, _b, _c, _d, _e;
     if (data === void 0) {
       return;
     }
@@ -76471,7 +76603,7 @@ var Options = class {
     if (data.autoPlay !== void 0) {
       this.autoPlay = data.autoPlay;
     }
-    const detectRetina = (_a8 = data.detectRetina) !== null && _a8 !== void 0 ? _a8 : data.retina_detect;
+    const detectRetina = (_a7 = data.detectRetina) !== null && _a7 !== void 0 ? _a7 : data.retina_detect;
     if (detectRetina !== void 0) {
       this.detectRetina = detectRetina;
     }
@@ -76553,8 +76685,8 @@ var Options = class {
   }
 };
 _Options_engine = /* @__PURE__ */ new WeakMap(), _Options_instances = /* @__PURE__ */ new WeakSet(), _Options_findDefaultTheme = function _Options_findDefaultTheme2(mode) {
-  var _a8;
-  return (_a8 = this.themes.find((theme) => theme.default.value && theme.default.mode === mode)) !== null && _a8 !== void 0 ? _a8 : this.themes.find((theme) => theme.default.value && theme.default.mode === "any");
+  var _a7;
+  return (_a7 = this.themes.find((theme) => theme.default.value && theme.default.mode === mode)) !== null && _a7 !== void 0 ? _a7 : this.themes.find((theme) => theme.default.value && theme.default.mode === "any");
 };
 
 // node_modules/tsparticles/esm/Core/Utils/InteractionManager.js
@@ -76715,7 +76847,7 @@ var fixOutMode = (data) => {
 };
 var Particle = class {
   constructor(engine, id, container, position, overrideOptions, group) {
-    var _a8, _b, _c, _d, _e, _f, _g;
+    var _a7, _b, _c, _d, _e, _f, _g;
     this.id = id;
     this.container = container;
     this.group = group;
@@ -76752,7 +76884,7 @@ var Particle = class {
     if (overrideOptions !== void 0) {
       particlesOptions.load(overrideOptions);
     }
-    if (((_a8 = this.shapeData) === null || _a8 === void 0 ? void 0 : _a8.particles) !== void 0) {
+    if (((_a7 = this.shapeData) === null || _a7 === void 0 ? void 0 : _a7.particles) !== void 0) {
       particlesOptions.load((_b = this.shapeData) === null || _b === void 0 ? void 0 : _b.particles);
     }
     this.fill = (_d = (_c = this.shapeData) === null || _c === void 0 ? void 0 : _c.fill) !== null && _d !== void 0 ? _d : this.fill;
@@ -76867,15 +76999,15 @@ var Particle = class {
     };
   }
   getRadius() {
-    var _a8;
-    return (_a8 = this.bubble.radius) !== null && _a8 !== void 0 ? _a8 : this.size.value;
+    var _a7;
+    return (_a7 = this.bubble.radius) !== null && _a7 !== void 0 ? _a7 : this.size.value;
   }
   getMass() {
     return this.getRadius() ** 2 * Math.PI / 2;
   }
   getFillColor() {
-    var _a8, _b;
-    const color = (_a8 = this.bubble.color) !== null && _a8 !== void 0 ? _a8 : getHslFromAnimation(this.color);
+    var _a7, _b;
+    const color = (_a7 = this.bubble.color) !== null && _a7 !== void 0 ? _a7 : getHslFromAnimation(this.color);
     if (color && this.roll && (this.backColor || this.roll.alter)) {
       const backFactor = this.options.roll.mode === "both" ? 2 : 1, backSum = this.options.roll.mode === "horizontal" ? Math.PI / 2 : 0, rolled = Math.floor((((_b = this.roll.angle) !== null && _b !== void 0 ? _b : 0) + backSum) / (Math.PI / backFactor)) % 2;
       if (rolled) {
@@ -76890,8 +77022,8 @@ var Particle = class {
     return color;
   }
   getStrokeColor() {
-    var _a8, _b;
-    return (_b = (_a8 = this.bubble.color) !== null && _a8 !== void 0 ? _a8 : getHslFromAnimation(this.strokeColor)) !== null && _b !== void 0 ? _b : this.getFillColor();
+    var _a7, _b;
+    return (_b = (_a7 = this.bubble.color) !== null && _a7 !== void 0 ? _a7 : getHslFromAnimation(this.strokeColor)) !== null && _b !== void 0 ? _b : this.getFillColor();
   }
   destroy(override) {
     this.destroyed = true;
@@ -76931,7 +77063,7 @@ var Particle = class {
     }
   }
   calcPosition(container, position, zIndex, tryCount = 0) {
-    var _a8, _b, _c, _d;
+    var _a7, _b, _c, _d;
     for (const [, plugin] of container.plugins) {
       const pluginPos = plugin.particlePosition !== void 0 ? plugin.particlePosition(position, this) : void 0;
       if (pluginPos !== void 0) {
@@ -76960,7 +77092,7 @@ var Particle = class {
         radius
       });
     };
-    fixHorizontal((_a8 = outModes.left) !== null && _a8 !== void 0 ? _a8 : outModes.default);
+    fixHorizontal((_a7 = outModes.left) !== null && _a7 !== void 0 ? _a7 : outModes.default);
     fixHorizontal((_b = outModes.right) !== null && _b !== void 0 ? _b : outModes.default);
     fixVertical((_c = outModes.top) !== null && _c !== void 0 ? _c : outModes.default);
     fixVertical((_d = outModes.bottom) !== null && _d !== void 0 ? _d : outModes.default);
@@ -77160,7 +77292,7 @@ var QuadTree = class _QuadTree {
     this.divided = false;
   }
   insert(point) {
-    var _a8, _b, _c, _d, _e;
+    var _a7, _b, _c, _d, _e;
     if (!this.rectangle.contains(point.position)) {
       return false;
     }
@@ -77171,7 +77303,7 @@ var QuadTree = class _QuadTree {
     if (!this.divided) {
       this.subdivide();
     }
-    return (_e = ((_a8 = this.northEast) === null || _a8 === void 0 ? void 0 : _a8.insert(point)) || ((_b = this.northWest) === null || _b === void 0 ? void 0 : _b.insert(point)) || ((_c = this.southEast) === null || _c === void 0 ? void 0 : _c.insert(point)) || ((_d = this.southWest) === null || _d === void 0 ? void 0 : _d.insert(point))) !== null && _e !== void 0 ? _e : false;
+    return (_e = ((_a7 = this.northEast) === null || _a7 === void 0 ? void 0 : _a7.insert(point)) || ((_b = this.northWest) === null || _b === void 0 ? void 0 : _b.insert(point)) || ((_c = this.southEast) === null || _c === void 0 ? void 0 : _c.insert(point)) || ((_d = this.southWest) === null || _d === void 0 ? void 0 : _d.insert(point))) !== null && _e !== void 0 ? _e : false;
   }
   queryCircle(position, radius) {
     return this.query(new Circle(position.x, position.y, radius));
@@ -77184,7 +77316,7 @@ var QuadTree = class _QuadTree {
     return this.query(new Rectangle(position.x, position.y, size.width, size.height));
   }
   query(range, found) {
-    var _a8, _b, _c, _d;
+    var _a7, _b, _c, _d;
     const res = found !== null && found !== void 0 ? found : [];
     if (!range.intersects(this.rectangle)) {
       return [];
@@ -77196,7 +77328,7 @@ var QuadTree = class _QuadTree {
       res.push(p.particle);
     }
     if (this.divided) {
-      (_a8 = this.northEast) === null || _a8 === void 0 ? void 0 : _a8.query(range, res);
+      (_a7 = this.northEast) === null || _a7 === void 0 ? void 0 : _a7.query(range, res);
       (_b = this.northWest) === null || _b === void 0 ? void 0 : _b.query(range, res);
       (_c = this.southEast) === null || _c === void 0 ? void 0 : _c.query(range, res);
       (_d = this.southWest) === null || _d === void 0 ? void 0 : _d.query(range, res);
@@ -77252,7 +77384,7 @@ var Particles = class {
     return this.array.length;
   }
   init() {
-    var _a8;
+    var _a7;
     const container = this.container, options = container.actualOptions;
     this.lastZIndex = 0;
     this.needsSort = false;
@@ -77273,7 +77405,7 @@ var Particles = class {
     if (!handled) {
       for (const group in options.particles.groups) {
         const groupOptions = options.particles.groups[group];
-        for (let i = this.count, j = 0; j < ((_a8 = groupOptions.number) === null || _a8 === void 0 ? void 0 : _a8.value) && i < options.particles.number.value; i++, j++) {
+        for (let i = this.count, j = 0; j < ((_a7 = groupOptions.number) === null || _a7 === void 0 ? void 0 : _a7.value) && i < options.particles.number.value; i++, j++) {
           this.addParticle(void 0, groupOptions, group);
         }
       }
@@ -77485,8 +77617,8 @@ var Particles = class {
     this.interactionManager.handleClickMode(mode);
   }
   applyDensity(options, manualCount, group) {
-    var _a8;
-    if (!((_a8 = options.number.density) === null || _a8 === void 0 ? void 0 : _a8.enable)) {
+    var _a7;
+    if (!((_a7 = options.number.density) === null || _a7 === void 0 ? void 0 : _a7.enable)) {
       return;
     }
     const numberOptions = options.number, densityFactor = this.initDensityFactor(numberOptions.density), optParticlesNumber = numberOptions.value, optParticlesLimit = numberOptions.limit > 0 ? numberOptions.limit : optParticlesNumber, particlesNumber = Math.min(optParticlesNumber, optParticlesLimit) * densityFactor + manualCount, particlesCount = Math.min(this.count, this.array.filter((t) => t.group === group).length);
@@ -77728,7 +77860,7 @@ var Container2 = class {
     this.setPath(noiseOrGenerator, init, update);
   }
   setPath(pathOrGenerator, init, update) {
-    var _a8, _b, _c;
+    var _a7, _b, _c;
     if (!pathOrGenerator) {
       return;
     }
@@ -77743,7 +77875,7 @@ var Container2 = class {
     } else {
       const oldGenerator = this.pathGenerator;
       this.pathGenerator = pathOrGenerator;
-      (_a8 = this.pathGenerator).generate || (_a8.generate = oldGenerator.generate);
+      (_a7 = this.pathGenerator).generate || (_a7.generate = oldGenerator.generate);
       (_b = this.pathGenerator).init || (_b.init = oldGenerator.init);
       (_c = this.pathGenerator).update || (_c.update = oldGenerator.update);
     }
@@ -77765,8 +77897,8 @@ var Container2 = class {
     this.exportImage(callback);
   }
   exportImage(callback, type, quality) {
-    var _a8;
-    return (_a8 = this.canvas.element) === null || _a8 === void 0 ? void 0 : _a8.toBlob(callback, type !== null && type !== void 0 ? type : "image/png", quality);
+    var _a7;
+    return (_a7 = this.canvas.element) === null || _a7 === void 0 ? void 0 : _a7.toBlob(callback, type !== null && type !== void 0 ? type : "image/png", quality);
   }
   exportConfiguration() {
     return JSON.stringify(this.actualOptions, void 0, 2);
@@ -77871,7 +78003,7 @@ var Container2 = class {
       touchMoved = true;
     };
     const touchEndHandler = (e) => {
-      var _a8, _b, _c;
+      var _a7, _b, _c;
       if (this.destroyed) {
         return;
       }
@@ -77884,7 +78016,7 @@ var Container2 = class {
             return;
           }
         }
-        const canvasRect = (_a8 = this.canvas.element) === null || _a8 === void 0 ? void 0 : _a8.getBoundingClientRect(), pos = {
+        const canvasRect = (_a7 = this.canvas.element) === null || _a7 === void 0 ? void 0 : _a7.getBoundingClientRect(), pos = {
           x: lastTouch.clientX - ((_b = canvasRect === null || canvasRect === void 0 ? void 0 : canvasRect.left) !== null && _b !== void 0 ? _b : 0),
           y: lastTouch.clientY - ((_c = canvasRect === null || canvasRect === void 0 ? void 0 : canvasRect.top) !== null && _c !== void 0 ? _c : 0)
         };
@@ -78034,8 +78166,8 @@ var Loader = class {
   }
   loadOptions(params) {
     return __async(this, null, function* () {
-      var _a8, _b, _c;
-      const tagId = (_a8 = params.tagId) !== null && _a8 !== void 0 ? _a8 : `tsparticles${Math.floor(Math.random() * 1e4)}`, { options, index } = params;
+      var _a7, _b, _c;
+      const tagId = (_a7 = params.tagId) !== null && _a7 !== void 0 ? _a7 : `tsparticles${Math.floor(Math.random() * 1e4)}`, { options, index } = params;
       let domContainer = (_b = params.element) !== null && _b !== void 0 ? _b : document.getElementById(tagId);
       if (!domContainer) {
         domContainer = document.createElement("div");
@@ -78521,7 +78653,7 @@ var Absorber = class {
 // node_modules/tsparticles/esm/Plugins/Absorbers/AbsorberInstance.js
 var AbsorberInstance = class {
   constructor(absorbers, container, options, position) {
-    var _a8, _b, _c;
+    var _a7, _b, _c;
     this.absorbers = absorbers;
     this.container = container;
     this.initialPosition = position ? Vector.create(position.x, position.y) : void 0;
@@ -78541,7 +78673,7 @@ var AbsorberInstance = class {
       radius: limit.radius * container.retina.pixelRatio * container.retina.reduceFactor,
       mass: limit.mass
     };
-    this.color = (_a8 = colorToRgb(this.options.color)) !== null && _a8 !== void 0 ? _a8 : {
+    this.color = (_a7 = colorToRgb(this.options.color)) !== null && _a7 !== void 0 ? _a7 : {
       b: 0,
       g: 0,
       r: 0
@@ -78612,7 +78744,7 @@ var AbsorberInstance = class {
     return Vector.create(exactPosition.x, exactPosition.y);
   }
   updateParticlePosition(particle, v) {
-    var _a8;
+    var _a7;
     if (particle.destroyed) {
       return;
     }
@@ -78646,7 +78778,7 @@ var AbsorberInstance = class {
       particle.position.x = this.position.x + orbitRadius * updateFunc.x(orbitAngle);
       particle.position.y = this.position.y + orbitRadius * updateFunc.y(orbitAngle);
       particle.absorberOrbit.length -= v.length;
-      particle.absorberOrbit.angle += ((_a8 = particle.retina.moveSpeed) !== null && _a8 !== void 0 ? _a8 : 0) * container.retina.pixelRatio / 100 * container.retina.reduceFactor;
+      particle.absorberOrbit.angle += ((_a7 = particle.retina.moveSpeed) !== null && _a7 !== void 0 ? _a7 : 0) * container.retina.pixelRatio / 100 * container.retina.reduceFactor;
     } else {
       const addV = Vector.origin;
       addV.length = v.length;
@@ -78668,7 +78800,7 @@ var Absorbers = class {
     overridableContainer.addAbsorber = (options, position) => this.addAbsorber(options, position);
   }
   init(options) {
-    var _a8, _b;
+    var _a7, _b;
     if (!options) {
       return;
     }
@@ -78686,7 +78818,7 @@ var Absorbers = class {
         this.absorbers.load(options.absorbers);
       }
     }
-    const interactivityAbsorbers = (_b = (_a8 = options.interactivity) === null || _a8 === void 0 ? void 0 : _a8.modes) === null || _b === void 0 ? void 0 : _b.absorbers;
+    const interactivityAbsorbers = (_b = (_a7 = options.interactivity) === null || _a7 === void 0 ? void 0 : _a7.modes) === null || _b === void 0 ? void 0 : _b.absorbers;
     if (interactivityAbsorbers) {
       if (interactivityAbsorbers instanceof Array) {
         this.interactivityAbsorbers = interactivityAbsorbers.map((s) => {
@@ -78769,7 +78901,7 @@ var AbsorbersPlugin = class {
     return new Absorbers(container);
   }
   needsPlugin(options) {
-    var _a8, _b, _c;
+    var _a7, _b, _c;
     if (options === void 0) {
       return false;
     }
@@ -78778,13 +78910,13 @@ var AbsorbersPlugin = class {
       return !!absorbers.length;
     } else if (absorbers) {
       return true;
-    } else if (((_c = (_b = (_a8 = options.interactivity) === null || _a8 === void 0 ? void 0 : _a8.events) === null || _b === void 0 ? void 0 : _b.onClick) === null || _c === void 0 ? void 0 : _c.mode) && isInArray("absorber", options.interactivity.events.onClick.mode)) {
+    } else if (((_c = (_b = (_a7 = options.interactivity) === null || _a7 === void 0 ? void 0 : _a7.events) === null || _b === void 0 ? void 0 : _b.onClick) === null || _c === void 0 ? void 0 : _c.mode) && isInArray("absorber", options.interactivity.events.onClick.mode)) {
       return true;
     }
     return false;
   }
   loadOptions(options, source) {
-    var _a8, _b;
+    var _a7, _b;
     if (!this.needsPlugin(options) && !this.needsPlugin(source)) {
       return;
     }
@@ -78804,7 +78936,7 @@ var AbsorbersPlugin = class {
         absorberOptions.load(source === null || source === void 0 ? void 0 : source.absorbers);
       }
     }
-    const interactivityAbsorbers = (_b = (_a8 = source === null || source === void 0 ? void 0 : source.interactivity) === null || _a8 === void 0 ? void 0 : _a8.modes) === null || _b === void 0 ? void 0 : _b.absorbers;
+    const interactivityAbsorbers = (_b = (_a7 = source === null || source === void 0 ? void 0 : source.interactivity) === null || _a7 === void 0 ? void 0 : _a7.modes) === null || _b === void 0 ? void 0 : _b.absorbers;
     if (interactivityAbsorbers) {
       if (interactivityAbsorbers instanceof Array) {
         optionsCast.interactivity.modes.absorbers = interactivityAbsorbers.map((s) => {
@@ -78994,7 +79126,7 @@ var _EmitterInstance_startParticlesAdded;
 var _EmitterInstance_engine;
 var EmitterInstance = class {
   constructor(engine, emitters, container, options, position) {
-    var _a8, _b, _c, _d, _e, _f, _g;
+    var _a7, _b, _c, _d, _e, _f, _g;
     var _h;
     this.emitters = emitters;
     this.container = container;
@@ -79012,7 +79144,7 @@ var EmitterInstance = class {
       this.options = new Emitter();
       this.options.load(options);
     }
-    this.spawnDelay = ((_a8 = this.options.life.delay) !== null && _a8 !== void 0 ? _a8 : 0) * 1e3 / this.container.retina.reduceFactor;
+    this.spawnDelay = ((_a7 = this.options.life.delay) !== null && _a7 !== void 0 ? _a7 : 0) * 1e3 / this.container.retina.reduceFactor;
     this.position = (_b = this.initialPosition) !== null && _b !== void 0 ? _b : this.calcPosition();
     this.name = this.options.name;
     this.shape = (_c = __classPrivateFieldGet8(this, _EmitterInstance_engine, "f").emitterShapeManager) === null || _c === void 0 ? void 0 : _c.getShape(this.options.shape);
@@ -79050,11 +79182,11 @@ var EmitterInstance = class {
     this.pause();
   }
   play() {
-    var _a8;
+    var _a7;
     if (this.paused) {
       return;
     }
-    if (!(this.container.retina.reduceFactor && (this.lifeCount > 0 || this.immortal || !this.options.life.count) && (__classPrivateFieldGet8(this, _EmitterInstance_firstSpawn, "f") || this.currentSpawnDelay >= ((_a8 = this.spawnDelay) !== null && _a8 !== void 0 ? _a8 : 0)))) {
+    if (!(this.container.retina.reduceFactor && (this.lifeCount > 0 || this.immortal || !this.options.life.count) && (__classPrivateFieldGet8(this, _EmitterInstance_firstSpawn, "f") || this.currentSpawnDelay >= ((_a7 = this.spawnDelay) !== null && _a7 !== void 0 ? _a7 : 0)))) {
       return;
     }
     if (this.emitDelay === void 0) {
@@ -79076,13 +79208,13 @@ var EmitterInstance = class {
     this.position = initialPosition && isPointInside(initialPosition, this.container.canvas.size) ? initialPosition : this.calcPosition();
   }
   update(delta) {
-    var _a8, _b, _c;
+    var _a7, _b, _c;
     if (this.paused) {
       return;
     }
     if (__classPrivateFieldGet8(this, _EmitterInstance_firstSpawn, "f")) {
       __classPrivateFieldSet9(this, _EmitterInstance_firstSpawn, false, "f");
-      this.currentSpawnDelay = (_a8 = this.spawnDelay) !== null && _a8 !== void 0 ? _a8 : 0;
+      this.currentSpawnDelay = (_a7 = this.spawnDelay) !== null && _a7 !== void 0 ? _a7 : 0;
       this.currentEmitDelay = (_b = this.emitDelay) !== null && _b !== void 0 ? _b : 0;
     }
     if (!__classPrivateFieldGet8(this, _EmitterInstance_startParticlesAdded, "f")) {
@@ -79156,11 +79288,11 @@ var EmitterInstance = class {
     };
   }
   prepareToDie() {
-    var _a8;
+    var _a7;
     if (this.paused) {
       return;
     }
-    const duration = (_a8 = this.options.life) === null || _a8 === void 0 ? void 0 : _a8.duration;
+    const duration = (_a7 = this.options.life) === null || _a7 === void 0 ? void 0 : _a7.duration;
     if (this.container.retina.reduceFactor && (this.lifeCount > 0 || this.immortal) && duration !== void 0 && duration > 0) {
       this.duration = duration * 1e3;
     }
@@ -79182,12 +79314,12 @@ var EmitterInstance = class {
     this.emitParticles(quantity);
   }
   emitParticles(quantity) {
-    var _a8, _b, _c;
+    var _a7, _b, _c;
     const position = this.getPosition(), size = this.getSize();
     for (let i = 0; i < quantity; i++) {
       const particlesOptions = deepExtend({}, this.particlesOptions);
       if (this.spawnColor) {
-        const hslAnimation = (_a8 = this.options.spawnColor) === null || _a8 === void 0 ? void 0 : _a8.animation;
+        const hslAnimation = (_a7 = this.options.spawnColor) === null || _a7 === void 0 ? void 0 : _a7.animation;
         if (hslAnimation) {
           this.spawnColor.h = this.setColorAnimation(hslAnimation.h, this.spawnColor.h, 360);
           this.spawnColor.s = this.setColorAnimation(hslAnimation.s, this.spawnColor.s, 100);
@@ -79209,12 +79341,12 @@ var EmitterInstance = class {
     }
   }
   setColorAnimation(animation2, initValue, maxValue) {
-    var _a8;
+    var _a7;
     const container = this.container;
     if (!animation2.enable) {
       return initValue;
     }
-    const colorOffset = randomInRange(animation2.offset), delay = getRangeValue(this.options.rate.delay), emitFactor = 1e3 * delay / container.retina.reduceFactor, colorSpeed = getRangeValue((_a8 = animation2.speed) !== null && _a8 !== void 0 ? _a8 : 0);
+    const colorOffset = randomInRange(animation2.offset), delay = getRangeValue(this.options.rate.delay), emitFactor = 1e3 * delay / container.retina.reduceFactor, colorSpeed = getRangeValue((_a7 = animation2.speed) !== null && _a7 !== void 0 ? _a7 : 0);
     return (initValue + colorSpeed * container.fpsLimit / emitFactor + colorOffset * 3.6) % maxValue;
   }
 };
@@ -79264,7 +79396,7 @@ var Emitters = class {
     };
   }
   init(options) {
-    var _a8, _b;
+    var _a7, _b;
     if (!options) {
       return;
     }
@@ -79282,7 +79414,7 @@ var Emitters = class {
         this.emitters.load(options.emitters);
       }
     }
-    const interactivityEmitters = (_b = (_a8 = options.interactivity) === null || _a8 === void 0 ? void 0 : _a8.modes) === null || _b === void 0 ? void 0 : _b.emitters;
+    const interactivityEmitters = (_b = (_a7 = options.interactivity) === null || _a7 === void 0 ? void 0 : _a7.modes) === null || _b === void 0 ? void 0 : _b.emitters;
     if (interactivityEmitters) {
       if (interactivityEmitters instanceof Array) {
         this.interactivityEmitters = interactivityEmitters.map((s) => {
@@ -79450,15 +79582,15 @@ var EmittersPlugin = class {
     return new Emitters(__classPrivateFieldGet10(this, _EmittersPlugin_engine, "f"), container);
   }
   needsPlugin(options) {
-    var _a8, _b, _c;
+    var _a7, _b, _c;
     if (options === void 0) {
       return false;
     }
     const emitters = options.emitters;
-    return emitters instanceof Array && !!emitters.length || emitters !== void 0 || !!((_c = (_b = (_a8 = options.interactivity) === null || _a8 === void 0 ? void 0 : _a8.events) === null || _b === void 0 ? void 0 : _b.onClick) === null || _c === void 0 ? void 0 : _c.mode) && isInArray("emitter", options.interactivity.events.onClick.mode);
+    return emitters instanceof Array && !!emitters.length || emitters !== void 0 || !!((_c = (_b = (_a7 = options.interactivity) === null || _a7 === void 0 ? void 0 : _a7.events) === null || _b === void 0 ? void 0 : _b.onClick) === null || _c === void 0 ? void 0 : _c.mode) && isInArray("emitter", options.interactivity.events.onClick.mode);
   }
   loadOptions(options, source) {
-    var _a8, _b;
+    var _a7, _b;
     if (!this.needsPlugin(options) && !this.needsPlugin(source)) {
       return;
     }
@@ -79478,7 +79610,7 @@ var EmittersPlugin = class {
         emitterOptions.load(source === null || source === void 0 ? void 0 : source.emitters);
       }
     }
-    const interactivityEmitters = (_b = (_a8 = source === null || source === void 0 ? void 0 : source.interactivity) === null || _a8 === void 0 ? void 0 : _a8.modes) === null || _b === void 0 ? void 0 : _b.emitters;
+    const interactivityEmitters = (_b = (_a7 = source === null || source === void 0 ? void 0 : source.interactivity) === null || _a7 === void 0 ? void 0 : _a7.modes) === null || _b === void 0 ? void 0 : _b.emitters;
     if (interactivityEmitters) {
       if (interactivityEmitters instanceof Array) {
         optionsCast.interactivity.modes.emitters = interactivityEmitters.map((s) => {
@@ -79504,8 +79636,8 @@ function loadEmittersPlugin(engine) {
     }
     if (!engine.addEmitterShape) {
       engine.addEmitterShape = (name, shape) => {
-        var _a8;
-        (_a8 = engine.emitterShapeManager) === null || _a8 === void 0 ? void 0 : _a8.addShape(name, shape);
+        var _a7;
+        (_a7 = engine.emitterShapeManager) === null || _a7 === void 0 ? void 0 : _a7.addShape(name, shape);
       };
     }
     const plugin = new EmittersPlugin(engine);
@@ -79531,7 +79663,7 @@ var TrailMaker = class extends ExternalInteractorBase {
   }
   interact(delta) {
     return __async(this, null, function* () {
-      var _a8, _b, _c, _d;
+      var _a7, _b, _c, _d;
       if (!this.container.retina.reduceFactor) {
         return;
       }
@@ -79544,7 +79676,7 @@ var TrailMaker = class extends ExternalInteractorBase {
       }
       let canEmit = true;
       if (trailOptions.pauseOnStop) {
-        if (container.interactivity.mouse.position === this.lastPosition || ((_a8 = container.interactivity.mouse.position) === null || _a8 === void 0 ? void 0 : _a8.x) === ((_b = this.lastPosition) === null || _b === void 0 ? void 0 : _b.x) && ((_c = container.interactivity.mouse.position) === null || _c === void 0 ? void 0 : _c.y) === ((_d = this.lastPosition) === null || _d === void 0 ? void 0 : _d.y)) {
+        if (container.interactivity.mouse.position === this.lastPosition || ((_a7 = container.interactivity.mouse.position) === null || _a7 === void 0 ? void 0 : _a7.x) === ((_b = this.lastPosition) === null || _b === void 0 ? void 0 : _b.x) && ((_c = container.interactivity.mouse.position) === null || _c === void 0 ? void 0 : _c.y) === ((_d = this.lastPosition) === null || _d === void 0 ? void 0 : _d.y)) {
           canEmit = false;
         }
       }
@@ -79585,13 +79717,13 @@ var PolygonMaskDrawStroke = class {
     this.opacity = 1;
   }
   load(data) {
-    var _a8;
+    var _a7;
     if (!data) {
       return;
     }
     this.color = OptionsColor.create(this.color, data.color);
     if (typeof this.color.value === "string") {
-      this.opacity = (_a8 = stringToAlpha(this.color.value)) !== null && _a8 !== void 0 ? _a8 : this.opacity;
+      this.opacity = (_a7 = stringToAlpha(this.color.value)) !== null && _a7 !== void 0 ? _a7 : this.opacity;
     }
     if (data.opacity !== void 0) {
       this.opacity = data.opacity;
@@ -79621,14 +79753,14 @@ var PolygonMaskDraw = class {
     this.stroke.color = OptionsColor.create(this.stroke.color, value);
   }
   load(data) {
-    var _a8;
+    var _a7;
     if (!data) {
       return;
     }
     if (data.enable !== void 0) {
       this.enable = data.enable;
     }
-    const stroke = (_a8 = data.stroke) !== null && _a8 !== void 0 ? _a8 : {
+    const stroke = (_a7 = data.stroke) !== null && _a7 !== void 0 ? _a7 : {
       color: data.lineColor,
       width: data.lineWidth
     };
@@ -79714,12 +79846,12 @@ var PolygonMask = class {
     this.inline.arrangement = value;
   }
   load(data) {
-    var _a8;
+    var _a7;
     if (!data) {
       return;
     }
     this.draw.load(data.draw);
-    const inline = (_a8 = data.inline) !== null && _a8 !== void 0 ? _a8 : {
+    const inline = (_a7 = data.inline) !== null && _a7 !== void 0 ? _a7 : {
       arrangement: data.inlineArrangement
     };
     if (inline !== void 0) {
@@ -79781,10 +79913,10 @@ function drawPolygonMaskPath(context2, path, stroke, position) {
   context2.stroke(path);
 }
 function parsePaths(paths, scale, offset) {
-  var _a8;
+  var _a7;
   const res = [];
   for (const path of paths) {
-    const segments = path.element.pathSegList, len = (_a8 = segments === null || segments === void 0 ? void 0 : segments.numberOfItems) !== null && _a8 !== void 0 ? _a8 : 0, p = {
+    const segments = path.element.pathSegList, len = (_a7 = segments === null || segments === void 0 ? void 0 : segments.numberOfItems) !== null && _a7 !== void 0 ? _a7 : 0, p = {
       x: 0,
       y: 0
     };
@@ -79909,9 +80041,9 @@ var PolygonMaskInstance = class {
     return false;
   }
   particlePosition(position) {
-    var _a8, _b;
+    var _a7, _b;
     const options = this.options;
-    if (!(options.enable && ((_b = (_a8 = this.raw) === null || _a8 === void 0 ? void 0 : _a8.length) !== null && _b !== void 0 ? _b : 0) > 0)) {
+    if (!(options.enable && ((_b = (_a7 = this.raw) === null || _a7 === void 0 ? void 0 : _a7.length) !== null && _b !== void 0 ? _b : 0) > 0)) {
       return;
     }
     return deepExtend({}, position ? position : this.randomPoint());
@@ -79924,8 +80056,8 @@ var PolygonMaskInstance = class {
     return options.enable && options.type !== "none" && options.type !== "inline" && this.checkInsidePolygon(position);
   }
   draw(context2) {
-    var _a8;
-    if (!((_a8 = this.paths) === null || _a8 === void 0 ? void 0 : _a8.length)) {
+    var _a7;
+    if (!((_a7 = this.paths) === null || _a7 === void 0 ? void 0 : _a7.length)) {
       return;
     }
     const options = this.options, polygonDraw = options.draw;
@@ -79987,7 +80119,7 @@ var PolygonMaskInstance = class {
     return false;
   }
   checkInsidePolygon(position) {
-    var _a8, _b;
+    var _a7, _b;
     const container = this.container, options = this.options;
     if (!options.enable || options.type === "none" || options.type === "inline") {
       return true;
@@ -79995,7 +80127,7 @@ var PolygonMaskInstance = class {
     if (!this.raw) {
       throw new Error(Constants.noPolygonFound);
     }
-    const canvasSize = container.canvas.size, x = (_a8 = position === null || position === void 0 ? void 0 : position.x) !== null && _a8 !== void 0 ? _a8 : Math.random() * canvasSize.width, y = (_b = position === null || position === void 0 ? void 0 : position.y) !== null && _b !== void 0 ? _b : Math.random() * canvasSize.height;
+    const canvasSize = container.canvas.size, x = (_a7 = position === null || position === void 0 ? void 0 : position.x) !== null && _a7 !== void 0 ? _a7 : Math.random() * canvasSize.width, y = (_b = position === null || position === void 0 ? void 0 : position.y) !== null && _b !== void 0 ? _b : Math.random() * canvasSize.height;
     let inside = false;
     for (let i = 0, j = this.raw.length - 1; i < this.raw.length; j = i++) {
       const pi = this.raw[i], pj = this.raw[j], intersect = pi.y > y !== pj.y > y && x < (pj.x - pi.x) * (y - pi.y) / (pj.y - pi.y) + pi.x;
@@ -80006,7 +80138,7 @@ var PolygonMaskInstance = class {
     return options.type === "inside" ? inside : options.type === "outside" ? !inside : false;
   }
   parseSvgPath(xml, force) {
-    var _a8, _b, _c;
+    var _a7, _b, _c;
     const forceDownload = force !== null && force !== void 0 ? force : false;
     if (this.paths !== void 0 && !forceDownload) {
       return this.raw;
@@ -80027,7 +80159,7 @@ var PolygonMaskInstance = class {
       }
     }
     const pxRatio = container.retina.pixelRatio, scale = options.scale / pxRatio;
-    this.dimension.width = parseFloat((_a8 = svg.getAttribute("width")) !== null && _a8 !== void 0 ? _a8 : "0") * scale;
+    this.dimension.width = parseFloat((_a7 = svg.getAttribute("width")) !== null && _a7 !== void 0 ? _a7 : "0") * scale;
     this.dimension.height = parseFloat((_b = svg.getAttribute("height")) !== null && _b !== void 0 ? _b : "0") * scale;
     const position = (_c = options.position) !== null && _c !== void 0 ? _c : {
       x: 50,
@@ -80105,9 +80237,9 @@ var PolygonMaskInstance = class {
     };
   }
   getRandomPointByLength() {
-    var _a8, _b, _c;
+    var _a7, _b, _c;
     const options = this.options;
-    if (!this.raw || !this.raw.length || !((_a8 = this.paths) === null || _a8 === void 0 ? void 0 : _a8.length)) {
+    if (!this.raw || !this.raw.length || !((_a7 = this.paths) === null || _a7 === void 0 ? void 0 : _a7.length)) {
       throw new Error(Constants.noPolygonDataLoaded);
     }
     const path = itemFromArray(this.paths), distance = Math.floor(Math.random() * path.length) + 1, point = path.element.getPointAtLength(distance);
@@ -80117,9 +80249,9 @@ var PolygonMaskInstance = class {
     };
   }
   getEquidistantPointByIndex(index) {
-    var _a8, _b, _c, _d, _e, _f, _g;
+    var _a7, _b, _c, _d, _e, _f, _g;
     const options = this.container.actualOptions, polygonMaskOptions = this.options;
-    if (!this.raw || !this.raw.length || !((_a8 = this.paths) === null || _a8 === void 0 ? void 0 : _a8.length))
+    if (!this.raw || !this.raw.length || !((_a7 = this.paths) === null || _a7 === void 0 ? void 0 : _a7.length))
       throw new Error(Constants.noPolygonDataLoaded);
     let offset = 0, point;
     const totalLength = this.paths.reduce((tot, path) => tot + path.length, 0), distance = totalLength / options.particles.number.value;
@@ -80148,9 +80280,9 @@ var PolygonMaskInstance = class {
     };
   }
   createPath2D() {
-    var _a8, _b;
+    var _a7, _b;
     const options = this.options;
-    if (!this.path2DSupported || !((_a8 = this.paths) === null || _a8 === void 0 ? void 0 : _a8.length)) {
+    if (!this.path2DSupported || !((_a7 = this.paths) === null || _a7 === void 0 ? void 0 : _a7.length)) {
       return;
     }
     for (const path of this.paths) {
@@ -80172,9 +80304,9 @@ var PolygonMaskInstance = class {
       path.path2d = new Path2D();
       path.path2d.moveTo(this.raw[0].x, this.raw[0].y);
       this.raw.forEach((pos, i) => {
-        var _a9;
+        var _a8;
         if (i > 0) {
-          (_a9 = path.path2d) === null || _a9 === void 0 ? void 0 : _a9.lineTo(pos.x, pos.y);
+          (_a8 = path.path2d) === null || _a8 === void 0 ? void 0 : _a8.lineTo(pos.x, pos.y);
         }
       });
       path.path2d.closePath();
@@ -80211,8 +80343,8 @@ var PolygonMaskPlugin = class {
     return new PolygonMaskInstance(container);
   }
   needsPlugin(options) {
-    var _a8, _b, _c;
-    return (_b = (_a8 = options === null || options === void 0 ? void 0 : options.polygon) === null || _a8 === void 0 ? void 0 : _a8.enable) !== null && _b !== void 0 ? _b : ((_c = options === null || options === void 0 ? void 0 : options.polygon) === null || _c === void 0 ? void 0 : _c.type) !== void 0 && options.polygon.type !== "none";
+    var _a7, _b, _c;
+    return (_b = (_a7 = options === null || options === void 0 ? void 0 : options.polygon) === null || _a7 === void 0 ? void 0 : _a7.enable) !== null && _b !== void 0 ? _b : ((_c = options === null || options === void 0 ? void 0 : options.polygon) === null || _c === void 0 ? void 0 : _c.type) !== void 0 && options.polygon.type !== "none";
   }
   loadOptions(options, source) {
     if (!this.needsPlugin(source)) {
@@ -80301,14 +80433,14 @@ function loadRollUpdater(engine) {
 
 // node_modules/tsparticles/esm/Updaters/Angle/AngleUpdater.js
 function updateAngle(particle, delta) {
-  var _a8;
+  var _a7;
   const rotate = particle.rotate;
   if (!rotate) {
     return;
   }
   const rotateOptions = particle.options.rotate;
   const rotateAnimation = rotateOptions.animation;
-  const speed = ((_a8 = rotate.velocity) !== null && _a8 !== void 0 ? _a8 : 0) * delta.factor;
+  const speed = ((_a7 = rotate.velocity) !== null && _a7 !== void 0 ? _a7 : 0) * delta.factor;
   const max = 2 * Math.PI;
   if (!rotateAnimation.enable) {
     return;
@@ -80478,10 +80610,10 @@ function getProximitySpeedFactor(particle) {
 // node_modules/tsparticles/esm/Movers/Base/BaseMover.js
 var BaseMover = class {
   init(particle) {
-    var _a8;
+    var _a7;
     const container = particle.container, options = particle.options, spinOptions = options.move.spin;
     if (spinOptions.enable) {
-      const spinPos = (_a8 = spinOptions.position) !== null && _a8 !== void 0 ? _a8 : { x: 50, y: 50 };
+      const spinPos = (_a7 = spinOptions.position) !== null && _a7 !== void 0 ? _a7 : { x: 50, y: 50 };
       const spinCenter = {
         x: spinPos.x / 100 * container.canvas.size.width,
         y: spinPos.y / 100 * container.canvas.size.height
@@ -80503,13 +80635,13 @@ var BaseMover = class {
     return !particle.destroyed && particle.options.move.enable;
   }
   move(particle, delta) {
-    var _a8, _b, _c;
+    var _a7, _b, _c;
     var _d, _e;
     const particleOptions = particle.options, moveOptions = particleOptions.move;
     if (!moveOptions.enable) {
       return;
     }
-    const container = particle.container, slowFactor = getProximitySpeedFactor(particle), baseSpeed = ((_a8 = (_d = particle.retina).moveSpeed) !== null && _a8 !== void 0 ? _a8 : _d.moveSpeed = getRangeValue(moveOptions.speed) * container.retina.pixelRatio) * container.retina.reduceFactor, moveDrift = (_b = (_e = particle.retina).moveDrift) !== null && _b !== void 0 ? _b : _e.moveDrift = getRangeValue(particle.options.move.drift) * container.retina.pixelRatio, maxSize = getRangeMax(particleOptions.size.value) * container.retina.pixelRatio, sizeFactor = moveOptions.size ? particle.getRadius() / maxSize : 1, speedFactor = sizeFactor * slowFactor * (delta.factor || 1), diffFactor = 2, moveSpeed = baseSpeed * speedFactor / diffFactor;
+    const container = particle.container, slowFactor = getProximitySpeedFactor(particle), baseSpeed = ((_a7 = (_d = particle.retina).moveSpeed) !== null && _a7 !== void 0 ? _a7 : _d.moveSpeed = getRangeValue(moveOptions.speed) * container.retina.pixelRatio) * container.retina.reduceFactor, moveDrift = (_b = (_e = particle.retina).moveDrift) !== null && _b !== void 0 ? _b : _e.moveDrift = getRangeValue(particle.options.move.drift) * container.retina.pixelRatio, maxSize = getRangeMax(particleOptions.size.value) * container.retina.pixelRatio, sizeFactor = moveOptions.size ? particle.getRadius() / maxSize : 1, speedFactor = sizeFactor * slowFactor * (delta.factor || 1), diffFactor = 2, moveSpeed = baseSpeed * speedFactor / diffFactor;
     applyPath(particle, delta);
     const gravityOptions = particle.gravity, gravityFactor = gravityOptions.enable && gravityOptions.inverse ? -1 : 1;
     if (gravityOptions.enable && moveSpeed) {
@@ -80572,13 +80704,13 @@ function loadCircleShape(engine) {
 
 // node_modules/tsparticles/esm/Updaters/Color/ColorUpdater.js
 function updateColorValue(delta, value, valueAnimation, max, decrease) {
-  var _a8;
+  var _a7;
   const colorValue = value;
   if (!colorValue || !valueAnimation.enable) {
     return;
   }
   const offset = randomInRange(valueAnimation.offset);
-  const velocity = ((_a8 = value.velocity) !== null && _a8 !== void 0 ? _a8 : 0) * delta.factor + offset * 3.6;
+  const velocity = ((_a7 = value.velocity) !== null && _a7 !== void 0 ? _a7 : 0) * delta.factor + offset * 3.6;
   if (!decrease || colorValue.status === 0) {
     colorValue.value += velocity;
     if (decrease && colorValue.value > max) {
@@ -80597,9 +80729,9 @@ function updateColorValue(delta, value, valueAnimation, max, decrease) {
   }
 }
 function updateColor(particle, delta) {
-  var _a8, _b, _c;
+  var _a7, _b, _c;
   const animationOptions = particle.options.color.animation;
-  if (((_a8 = particle.color) === null || _a8 === void 0 ? void 0 : _a8.h) !== void 0) {
+  if (((_a7 = particle.color) === null || _a7 === void 0 ? void 0 : _a7.h) !== void 0) {
     updateColorValue(delta, particle.color.h, animationOptions.h, 360, false);
   }
   if (((_b = particle.color) === null || _b === void 0 ? void 0 : _b.s) !== void 0) {
@@ -80620,9 +80752,9 @@ var ColorUpdater = class {
     }
   }
   isEnabled(particle) {
-    var _a8, _b, _c;
+    var _a7, _b, _c;
     const animationOptions = particle.options.color.animation;
-    return !particle.destroyed && !particle.spawning && (((_a8 = particle.color) === null || _a8 === void 0 ? void 0 : _a8.h.value) !== void 0 && animationOptions.h.enable || ((_b = particle.color) === null || _b === void 0 ? void 0 : _b.s.value) !== void 0 && animationOptions.s.enable || ((_c = particle.color) === null || _c === void 0 ? void 0 : _c.l.value) !== void 0 && animationOptions.l.enable);
+    return !particle.destroyed && !particle.spawning && (((_a7 = particle.color) === null || _a7 === void 0 ? void 0 : _a7.h.value) !== void 0 && animationOptions.h.enable || ((_b = particle.color) === null || _b === void 0 ? void 0 : _b.s.value) !== void 0 && animationOptions.s.enable || ((_c = particle.color) === null || _c === void 0 ? void 0 : _c.l.value) !== void 0 && animationOptions.l.enable);
   }
   update(particle, delta) {
     updateColor(particle, delta);
@@ -80934,7 +81066,7 @@ var Bubbler = class extends ExternalInteractorBase {
     }
   }
   clickBubble() {
-    var _a8, _b;
+    var _a7, _b;
     const container = this.container, options = container.actualOptions, mouseClickPos = container.interactivity.mouse.clickPosition;
     if (!mouseClickPos) {
       return;
@@ -80975,7 +81107,7 @@ var Bubbler = class extends ExternalInteractorBase {
         },
         particlesObj: {
           optValue: getRangeMax(particle.options.opacity.value),
-          value: (_b = (_a8 = particle.opacity) === null || _a8 === void 0 ? void 0 : _a8.value) !== null && _b !== void 0 ? _b : 1
+          value: (_b = (_a7 = particle.opacity) === null || _a7 === void 0 ? void 0 : _a7.value) !== null && _b !== void 0 ? _b : 1
         },
         type: "opacity"
       };
@@ -81027,8 +81159,8 @@ var Bubbler = class extends ExternalInteractorBase {
     }
   }
   hoverBubbleOpacity(particle, ratio, divBubble) {
-    var _a8, _b, _c;
-    const container = this.container, options = container.actualOptions, modeOpacity = (_a8 = divBubble === null || divBubble === void 0 ? void 0 : divBubble.opacity) !== null && _a8 !== void 0 ? _a8 : options.interactivity.modes.bubble.opacity;
+    var _a7, _b, _c;
+    const container = this.container, options = container.actualOptions, modeOpacity = (_a7 = divBubble === null || divBubble === void 0 ? void 0 : divBubble.opacity) !== null && _a7 !== void 0 ? _a7 : options.interactivity.modes.bubble.opacity;
     if (!modeOpacity) {
       return;
     }
@@ -81129,7 +81261,7 @@ var Grabber = class extends ExternalInteractorBase {
   }
   interact() {
     return __async(this, null, function* () {
-      var _a8;
+      var _a7;
       const container = this.container, options = container.actualOptions, interactivity = options.interactivity;
       if (!interactivity.events.onHover.enable || container.interactivity.status !== Constants.mouseMoveEvent) {
         return;
@@ -81148,7 +81280,7 @@ var Grabber = class extends ExternalInteractorBase {
         if (opacityLine <= 0) {
           continue;
         }
-        const optColor = (_a8 = grabLineOptions.color) !== null && _a8 !== void 0 ? _a8 : particle.options.links.color;
+        const optColor = (_a7 = grabLineOptions.color) !== null && _a7 !== void 0 ? _a7 : particle.options.links.color;
         if (!container.particles.grabLineColor) {
           const linksOptions = options.interactivity.modes.grab.links;
           container.particles.grabLineColor = getLinkRandomColor(optColor, linksOptions.blink, linksOptions.consent);
@@ -81350,10 +81482,10 @@ var Repulser = class extends ExternalInteractorBase {
     this.processRepulse(mousePos, repulseRadius, new Circle(mousePos.x, mousePos.y, repulseRadius));
   }
   processRepulse(position, repulseRadius, area, divRepulse) {
-    var _a8;
+    var _a7;
     const container = this.container, query = container.particles.quadTree.query(area), repulseOptions = container.actualOptions.interactivity.modes.repulse;
     for (const particle of query) {
-      const { dx, dy, distance } = getDistances(particle.position, position), velocity = ((_a8 = divRepulse === null || divRepulse === void 0 ? void 0 : divRepulse.speed) !== null && _a8 !== void 0 ? _a8 : repulseOptions.speed) * repulseOptions.factor, repulseFactor = clamp(calcEasing(1 - distance / repulseRadius, repulseOptions.easing) * velocity, 0, repulseOptions.maxSpeed), normVec = Vector.create(distance === 0 ? velocity : dx / distance * repulseFactor, distance === 0 ? velocity : dy / distance * repulseFactor);
+      const { dx, dy, distance } = getDistances(particle.position, position), velocity = ((_a7 = divRepulse === null || divRepulse === void 0 ? void 0 : divRepulse.speed) !== null && _a7 !== void 0 ? _a7 : repulseOptions.speed) * repulseOptions.factor, repulseFactor = clamp(calcEasing(1 - distance / repulseRadius, repulseOptions.easing) * velocity, 0, repulseOptions.maxSpeed), normVec = Vector.create(distance === 0 ? velocity : dx / distance * repulseFactor, distance === 0 ? velocity : dy / distance * repulseFactor);
       particle.position.addTo(normVec);
     }
   }
@@ -81455,8 +81587,8 @@ function downloadSvgImage(image) {
   });
 }
 function replaceImageColor(image, imageData, color, particle) {
-  var _a8, _b, _c;
-  const svgColoredData = replaceColorSvg(image, color, (_b = (_a8 = particle.opacity) === null || _a8 === void 0 ? void 0 : _a8.value) !== null && _b !== void 0 ? _b : 1);
+  var _a7, _b, _c;
+  const svgColoredData = replaceColorSvg(image, color, (_b = (_a7 = particle.opacity) === null || _a7 === void 0 ? void 0 : _a7.value) !== null && _b !== void 0 ? _b : 1);
   const svg = new Blob([svgColoredData], { type: "image/svg+xml" });
   const domUrl = URL || window.URL || window.webkitURL || window;
   const url = domUrl.createObjectURL(svg);
@@ -81531,9 +81663,9 @@ var ImageDrawer = class {
     __classPrivateFieldSet13(this, _ImageDrawer_images, [], "f");
   }
   draw(context2, particle, radius, opacity) {
-    var _a8, _b;
+    var _a7, _b;
     const image = particle.image;
-    const element2 = (_a8 = image === null || image === void 0 ? void 0 : image.data) === null || _a8 === void 0 ? void 0 : _a8.element;
+    const element2 = (_a7 = image === null || image === void 0 ? void 0 : image.data) === null || _a7 === void 0 ? void 0 : _a7.element;
     if (!element2) {
       return;
     }
@@ -81551,7 +81683,7 @@ var ImageDrawer = class {
     }
   }
   loadShape(particle) {
-    var _a8, _b, _c;
+    var _a7, _b, _c;
     if (particle.shape !== "image" && particle.shape !== "images") {
       return;
     }
@@ -81576,7 +81708,7 @@ var ImageDrawer = class {
         data: image,
         loaded: true,
         ratio: imageData.width / imageData.height,
-        replaceColor: (_a8 = imageData.replaceColor) !== null && _a8 !== void 0 ? _a8 : imageData.replace_color,
+        replaceColor: (_a7 = imageData.replaceColor) !== null && _a7 !== void 0 ? _a7 : imageData.replace_color,
         source: imageData.src
       };
     }
@@ -81610,7 +81742,7 @@ var ImageDrawer = class {
         this.addImage(container, image);
         const imageFunc = imageShape.replaceColor ? downloadSvgImage : loadImage;
         yield imageFunc(image);
-      } catch (_a8) {
+      } catch (_a7) {
         throw new Error(`tsParticles error - ${imageShape.src} not found`);
       }
     });
@@ -81730,13 +81862,13 @@ function checkDestroy(particle, value, minValue, maxValue) {
   }
 }
 function updateOpacity(particle, delta) {
-  var _a8, _b, _c, _d, _e;
+  var _a7, _b, _c, _d, _e;
   if (!particle.opacity) {
     return;
   }
   const minValue = particle.opacity.min;
   const maxValue = particle.opacity.max;
-  if (particle.destroyed || !particle.opacity.enable || ((_a8 = particle.opacity.maxLoops) !== null && _a8 !== void 0 ? _a8 : 0) > 0 && ((_b = particle.opacity.loops) !== null && _b !== void 0 ? _b : 0) > ((_c = particle.opacity.maxLoops) !== null && _c !== void 0 ? _c : 0)) {
+  if (particle.destroyed || !particle.opacity.enable || ((_a7 = particle.opacity.maxLoops) !== null && _a7 !== void 0 ? _a7 : 0) > 0 && ((_b = particle.opacity.loops) !== null && _b !== void 0 ? _b : 0) > ((_c = particle.opacity.maxLoops) !== null && _c !== void 0 ? _c : 0)) {
     return;
   }
   switch (particle.opacity.status) {
@@ -81810,8 +81942,8 @@ var OpacityUpdater = class {
     }
   }
   isEnabled(particle) {
-    var _a8, _b, _c, _d;
-    return !particle.destroyed && !particle.spawning && !!particle.opacity && particle.opacity.enable && (((_a8 = particle.opacity.maxLoops) !== null && _a8 !== void 0 ? _a8 : 0) <= 0 || ((_b = particle.opacity.maxLoops) !== null && _b !== void 0 ? _b : 0) > 0 && ((_c = particle.opacity.loops) !== null && _c !== void 0 ? _c : 0) < ((_d = particle.opacity.maxLoops) !== null && _d !== void 0 ? _d : 0));
+    var _a7, _b, _c, _d;
+    return !particle.destroyed && !particle.spawning && !!particle.opacity && particle.opacity.enable && (((_a7 = particle.opacity.maxLoops) !== null && _a7 !== void 0 ? _a7 : 0) <= 0 || ((_b = particle.opacity.maxLoops) !== null && _b !== void 0 ? _b : 0) > 0 && ((_c = particle.opacity.loops) !== null && _c !== void 0 ? _c : 0) < ((_d = particle.opacity.maxLoops) !== null && _d !== void 0 ? _d : 0));
   }
   update(particle, delta) {
     if (!this.isEnabled(particle)) {
@@ -81888,9 +82020,9 @@ var OutOfCanvasUpdater = class {
     return !particle.destroyed && !particle.spawning;
   }
   update(particle, delta) {
-    var _a8, _b, _c, _d;
+    var _a7, _b, _c, _d;
     const outModes = particle.options.move.outModes;
-    this.updateOutMode(particle, delta, (_a8 = outModes.bottom) !== null && _a8 !== void 0 ? _a8 : outModes.default, "bottom");
+    this.updateOutMode(particle, delta, (_a7 = outModes.bottom) !== null && _a7 !== void 0 ? _a7 : outModes.default, "bottom");
     this.updateOutMode(particle, delta, (_b = outModes.left) !== null && _b !== void 0 ? _b : outModes.default, "left");
     this.updateOutMode(particle, delta, (_c = outModes.right) !== null && _c !== void 0 ? _c : outModes.default, "right");
     this.updateOutMode(particle, delta, (_d = outModes.top) !== null && _d !== void 0 ? _d : outModes.default, "top");
@@ -82064,8 +82196,8 @@ var Attractor2 = class extends ParticlesInteractorBase {
   }
   interact(p1) {
     return __async(this, null, function* () {
-      var _a8;
-      const container = this.container, distance = (_a8 = p1.retina.attractDistance) !== null && _a8 !== void 0 ? _a8 : container.retina.attractDistance, pos1 = p1.getPosition(), query = container.particles.quadTree.queryCircle(pos1, distance);
+      var _a7;
+      const container = this.container, distance = (_a7 = p1.retina.attractDistance) !== null && _a7 !== void 0 ? _a7 : container.retina.attractDistance, pos1 = p1.getPosition(), query = container.particles.quadTree.queryCircle(pos1, distance);
       for (const p2 of query) {
         if (p1 === p2 || !p2.options.move.attract.enable || p2.destroyed || p2.spawning) {
           continue;
@@ -82227,13 +82359,13 @@ var Linker = class extends ParticlesInteractorBase {
   }
   interact(p1) {
     return __async(this, null, function* () {
-      var _a8;
+      var _a7;
       p1.links = [];
       const pos1 = p1.getPosition(), container = this.container, canvasSize = container.canvas.size;
       if (pos1.x < 0 || pos1.y < 0 || pos1.x > canvasSize.width || pos1.y > canvasSize.height) {
         return;
       }
-      const linkOpt1 = p1.options.links, optOpacity = linkOpt1.opacity, optDistance = (_a8 = p1.retina.linksDistance) !== null && _a8 !== void 0 ? _a8 : container.retina.linksDistance, warp = linkOpt1.warp, range = warp ? new CircleWarp(pos1.x, pos1.y, optDistance, canvasSize) : new Circle(pos1.x, pos1.y, optDistance), query = container.particles.quadTree.query(range);
+      const linkOpt1 = p1.options.links, optOpacity = linkOpt1.opacity, optDistance = (_a7 = p1.retina.linksDistance) !== null && _a7 !== void 0 ? _a7 : container.retina.linksDistance, warp = linkOpt1.warp, range = warp ? new CircleWarp(pos1.x, pos1.y, optDistance, canvasSize) : new Circle(pos1.x, pos1.y, optDistance), query = container.particles.quadTree.query(range);
       for (const p2 of query) {
         const linkOpt2 = p2.options.links;
         if (p1 === p2 || !linkOpt2.enable || linkOpt1.id !== linkOpt2.id || p2.spawning || p2.destroyed || p1.links.map((t) => t.destination).indexOf(p2) !== -1 || p2.links.map((t) => t.destination).indexOf(p1) !== -1) {
@@ -82325,8 +82457,8 @@ var LinkInstance = class {
     context2.restore();
   }
   drawLinkTriangle(p1, link1, link2) {
-    var _a8;
-    const container = this.container, options = container.actualOptions, p2 = link1.destination, p3 = link2.destination, triangleOptions = p1.options.links.triangles, opacityTriangle = (_a8 = triangleOptions.opacity) !== null && _a8 !== void 0 ? _a8 : (link1.opacity + link2.opacity) / 2;
+    var _a7;
+    const container = this.container, options = container.actualOptions, p2 = link1.destination, p3 = link2.destination, triangleOptions = p1.options.links.triangles, opacityTriangle = (_a7 = triangleOptions.opacity) !== null && _a7 !== void 0 ? _a7 : (link1.opacity + link2.opacity) / 2;
     if (opacityTriangle <= 0) {
       return;
     }
@@ -82350,7 +82482,7 @@ var LinkInstance = class {
     const container = this.container, options = container.actualOptions, p2 = link.destination, pos1 = p1.getPosition(), pos2 = p2.getPosition();
     let opacity = link.opacity;
     container.canvas.draw((ctx) => {
-      var _a8, _b;
+      var _a7, _b;
       let colorLine;
       const twinkle = p1.options.twinkle.lines;
       if (twinkle.enable) {
@@ -82367,7 +82499,7 @@ var LinkInstance = class {
       if (!colorLine) {
         return;
       }
-      const width = (_a8 = p1.retina.linksWidth) !== null && _a8 !== void 0 ? _a8 : container.retina.linksWidth, maxDistance = (_b = p1.retina.linksDistance) !== null && _b !== void 0 ? _b : container.retina.linksDistance;
+      const width = (_a7 = p1.retina.linksWidth) !== null && _a7 !== void 0 ? _a7 : container.retina.linksWidth, maxDistance = (_b = p1.retina.linksDistance) !== null && _b !== void 0 ? _b : container.retina.linksDistance;
       drawLinkLine(ctx, width, pos1, pos2, maxDistance, container.canvas.size, p1.options.links.warp, options.backgroundMask.enable, options.backgroundMask.composite, colorLine, opacity, p1.options.links.shadow);
     });
   }
@@ -82405,9 +82537,9 @@ function loadParticlesLinksInteraction(engine) {
 // node_modules/tsparticles/esm/Shapes/Polygon/PolygonDrawerBase.js
 var PolygonDrawerBase = class {
   getSidesCount(particle) {
-    var _a8, _b;
+    var _a7, _b;
     const polygon = particle.shapeData;
-    return (_b = (_a8 = polygon === null || polygon === void 0 ? void 0 : polygon.sides) !== null && _a8 !== void 0 ? _a8 : polygon === null || polygon === void 0 ? void 0 : polygon.nb_sides) !== null && _b !== void 0 ? _b : 5;
+    return (_b = (_a7 = polygon === null || polygon === void 0 ? void 0 : polygon.sides) !== null && _a7 !== void 0 ? _a7 : polygon === null || polygon === void 0 ? void 0 : polygon.nb_sides) !== null && _b !== void 0 ? _b : 5;
   }
   draw(context2, particle, radius) {
     const start = this.getCenter(particle, radius);
@@ -82433,9 +82565,9 @@ var PolygonDrawerBase = class {
 // node_modules/tsparticles/esm/Shapes/Polygon/PolygonDrawer.js
 var PolygonDrawer = class extends PolygonDrawerBase {
   getSidesData(particle, radius) {
-    var _a8, _b;
+    var _a7, _b;
     const polygon = particle.shapeData;
-    const sides = (_b = (_a8 = polygon === null || polygon === void 0 ? void 0 : polygon.sides) !== null && _a8 !== void 0 ? _a8 : polygon === null || polygon === void 0 ? void 0 : polygon.nb_sides) !== null && _b !== void 0 ? _b : 5;
+    const sides = (_b = (_a7 = polygon === null || polygon === void 0 ? void 0 : polygon.sides) !== null && _a7 !== void 0 ? _a7 : polygon === null || polygon === void 0 ? void 0 : polygon.nb_sides) !== null && _b !== void 0 ? _b : 5;
     return {
       count: {
         denominator: 1,
@@ -82509,8 +82641,8 @@ function checkDestroy2(particle, value, minValue, maxValue) {
   }
 }
 function updateSize(particle, delta) {
-  var _a8, _b, _c, _d;
-  const sizeVelocity = ((_a8 = particle.size.velocity) !== null && _a8 !== void 0 ? _a8 : 0) * delta.factor;
+  var _a7, _b, _c, _d;
+  const sizeVelocity = ((_a7 = particle.size.velocity) !== null && _a7 !== void 0 ? _a7 : 0) * delta.factor;
   const minValue = particle.size.min;
   const maxValue = particle.size.max;
   if (particle.destroyed || !particle.size.enable || ((_b = particle.size.maxLoops) !== null && _b !== void 0 ? _b : 0) > 0 && ((_c = particle.size.loops) !== null && _c !== void 0 ? _c : 0) > ((_d = particle.size.maxLoops) !== null && _d !== void 0 ? _d : 0)) {
@@ -82548,8 +82680,8 @@ var SizeUpdater = class {
   init() {
   }
   isEnabled(particle) {
-    var _a8, _b, _c, _d;
-    return !particle.destroyed && !particle.spawning && particle.size.enable && (((_a8 = particle.size.maxLoops) !== null && _a8 !== void 0 ? _a8 : 0) <= 0 || ((_b = particle.size.maxLoops) !== null && _b !== void 0 ? _b : 0) > 0 && ((_c = particle.size.loops) !== null && _c !== void 0 ? _c : 0) < ((_d = particle.size.maxLoops) !== null && _d !== void 0 ? _d : 0));
+    var _a7, _b, _c, _d;
+    return !particle.destroyed && !particle.spawning && particle.size.enable && (((_a7 = particle.size.maxLoops) !== null && _a7 !== void 0 ? _a7 : 0) <= 0 || ((_b = particle.size.maxLoops) !== null && _b !== void 0 ? _b : 0) > 0 && ((_c = particle.size.loops) !== null && _c !== void 0 ? _c : 0) < ((_d = particle.size.maxLoops) !== null && _d !== void 0 ? _d : 0));
   }
   update(particle, delta) {
     if (!this.isEnabled(particle)) {
@@ -82589,15 +82721,15 @@ function loadSquareShape(engine) {
 // node_modules/tsparticles/esm/Shapes/Star/StarDrawer.js
 var StarDrawer = class {
   getSidesCount(particle) {
-    var _a8, _b;
+    var _a7, _b;
     const star = particle.shapeData;
-    return (_b = (_a8 = star === null || star === void 0 ? void 0 : star.sides) !== null && _a8 !== void 0 ? _a8 : star === null || star === void 0 ? void 0 : star.nb_sides) !== null && _b !== void 0 ? _b : 5;
+    return (_b = (_a7 = star === null || star === void 0 ? void 0 : star.sides) !== null && _a7 !== void 0 ? _a7 : star === null || star === void 0 ? void 0 : star.nb_sides) !== null && _b !== void 0 ? _b : 5;
   }
   draw(context2, particle, radius) {
-    var _a8;
+    var _a7;
     const star = particle.shapeData;
     const sides = this.getSidesCount(particle);
-    const inset = (_a8 = star === null || star === void 0 ? void 0 : star.inset) !== null && _a8 !== void 0 ? _a8 : 2;
+    const inset = (_a7 = star === null || star === void 0 ? void 0 : star.inset) !== null && _a7 !== void 0 ? _a7 : 2;
     context2.moveTo(0, 0 - radius);
     for (let i = 0; i < sides; i++) {
       context2.rotate(Math.PI / sides);
@@ -82617,13 +82749,13 @@ function loadStarShape(engine) {
 
 // node_modules/tsparticles/esm/Updaters/StrokeColor/StrokeColorUpdater.js
 function updateColorValue2(delta, value, valueAnimation, max, decrease) {
-  var _a8;
+  var _a7;
   const colorValue = value;
   if (!colorValue || !colorValue.enable) {
     return;
   }
   const offset = randomInRange(valueAnimation.offset);
-  const velocity = ((_a8 = value.velocity) !== null && _a8 !== void 0 ? _a8 : 0) * delta.factor + offset * 3.6;
+  const velocity = ((_a7 = value.velocity) !== null && _a7 !== void 0 ? _a7 : 0) * delta.factor + offset * 3.6;
   if (!decrease || colorValue.status === 0) {
     colorValue.value += velocity;
     if (decrease && colorValue.value > max) {
@@ -82642,8 +82774,8 @@ function updateColorValue2(delta, value, valueAnimation, max, decrease) {
   }
 }
 function updateStrokeColor(particle, delta) {
-  var _a8, _b, _c, _d, _e, _f, _g, _h, _j, _k;
-  if (!((_a8 = particle.stroke) === null || _a8 === void 0 ? void 0 : _a8.color)) {
+  var _a7, _b, _c, _d, _e, _f, _g, _h, _j, _k;
+  if (!((_a7 = particle.stroke) === null || _a7 === void 0 ? void 0 : _a7.color)) {
     return;
   }
   const animationOptions = particle.stroke.color.animation;
@@ -82665,18 +82797,18 @@ var StrokeColorUpdater = class {
     this.container = container;
   }
   init(particle) {
-    var _a8, _b;
+    var _a7, _b;
     const container = this.container;
     particle.stroke = particle.options.stroke instanceof Array ? itemFromArray(particle.options.stroke, particle.id, particle.options.reduceDuplicates) : particle.options.stroke;
     particle.strokeWidth = particle.stroke.width * container.retina.pixelRatio;
-    const strokeHslColor = (_a8 = colorToHsl(particle.stroke.color)) !== null && _a8 !== void 0 ? _a8 : particle.getFillColor();
+    const strokeHslColor = (_a7 = colorToHsl(particle.stroke.color)) !== null && _a7 !== void 0 ? _a7 : particle.getFillColor();
     if (strokeHslColor) {
       particle.strokeColor = getHslAnimationFromHsl(strokeHslColor, (_b = particle.stroke.color) === null || _b === void 0 ? void 0 : _b.animation, container.retina.reduceFactor);
     }
   }
   isEnabled(particle) {
-    var _a8, _b, _c, _d;
-    const color = (_a8 = particle.stroke) === null || _a8 === void 0 ? void 0 : _a8.color;
+    var _a7, _b, _c, _d;
+    const color = (_a7 = particle.stroke) === null || _a7 === void 0 ? void 0 : _a7.color;
     return !particle.destroyed && !particle.spawning && !!color && (((_b = particle.strokeColor) === null || _b === void 0 ? void 0 : _b.h.value) !== void 0 && color.animation.h.enable || ((_c = particle.strokeColor) === null || _c === void 0 ? void 0 : _c.s.value) !== void 0 && color.animation.s.enable || ((_d = particle.strokeColor) === null || _d === void 0 ? void 0 : _d.l.value) !== void 0 && color.animation.l.enable);
   }
   update(particle, delta) {
@@ -82720,7 +82852,7 @@ var TextDrawer = class {
     });
   }
   draw(context2, particle, radius, opacity) {
-    var _a8, _b, _c;
+    var _a7, _b, _c;
     const character = particle.shapeData;
     if (character === void 0) {
       return;
@@ -82734,7 +82866,7 @@ var TextDrawer = class {
       textParticle.text = textData instanceof Array ? itemFromArray(textData, particle.randomIndexData) : textData;
     }
     const text2 = textParticle.text;
-    const style2 = (_a8 = character.style) !== null && _a8 !== void 0 ? _a8 : "";
+    const style2 = (_a7 = character.style) !== null && _a7 !== void 0 ? _a7 : "";
     const weight = (_b = character.weight) !== null && _b !== void 0 ? _b : "400";
     const size = Math.round(radius) * 2;
     const font = (_c = character.font) !== null && _c !== void 0 ? _c : "Verdana";
@@ -82801,13 +82933,13 @@ function loadSlim(engine) {
 
 // node_modules/tsparticles/esm/Updaters/Tilt/TiltUpdater.js
 function updateTilt(particle, delta) {
-  var _a8;
+  var _a7;
   if (!particle.tilt) {
     return;
   }
   const tilt = particle.options.tilt;
   const tiltAnimation = tilt.animation;
-  const speed = ((_a8 = particle.tilt.velocity) !== null && _a8 !== void 0 ? _a8 : 0) * delta.factor;
+  const speed = ((_a7 = particle.tilt.velocity) !== null && _a7 !== void 0 ? _a7 : 0) * delta.factor;
   const max = 2 * Math.PI;
   if (!tiltAnimation.enable) {
     return;
@@ -82908,13 +83040,13 @@ function loadTwinkleUpdater(engine) {
 
 // node_modules/tsparticles/esm/Updaters/Wobble/WobbleUpdater.js
 function updateWobble(particle, delta) {
-  var _a8;
+  var _a7;
   const wobble = particle.options.wobble;
   if (!wobble.enable || !particle.wobble) {
     return;
   }
   const speed = particle.wobble.speed * delta.factor;
-  const distance = ((_a8 = particle.retina.wobbleDistance) !== null && _a8 !== void 0 ? _a8 : 0) * delta.factor / (1e3 / 60);
+  const distance = ((_a7 = particle.retina.wobbleDistance) !== null && _a7 !== void 0 ? _a7 : 0) * delta.factor / (1e3 / 60);
   const max = 2 * Math.PI;
   particle.wobble.angle += speed;
   if (particle.wobble.angle > max) {
